@@ -16,7 +16,6 @@ public class Countries {
         this.context = context;
     }
 
-
     public List<Country> getCountries() {
         List<Country> countries = new ArrayList<>();
 

@@ -8,14 +8,13 @@ import java.util.List;
 /**
  * Created by kukolka on 14.08.16.
  */
-public class Coins {
+public class CoinDAO {
 
     Context context;
 
-    public Coins(Context context) {
+    public CoinDAO(Context context) {
         this.context = context;
     }
-
 
     public List<Coin> getCoins() {
         List<Coin> coins = new ArrayList<>();
@@ -39,30 +38,4 @@ public class Coins {
         return coins;
     }
 
-    class Coin {
-
-        int imageId;
-        String name;
-
-        public Coin(int imageId, String name) {
-            this.imageId = imageId;
-            this.name = name;
-        }
-
-        public int getImageId() {
-            return imageId;
-        }
-
-        public void setImageId(int imageId) {
-            this.imageId = imageId;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
 }

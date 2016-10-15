@@ -3,7 +3,6 @@ package org.numisoft.usquarters;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.view.Choreographer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,15 +19,15 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     Context context;
-    List<Coins.Coin> coins = new ArrayList<>();
+    List<Coin> coins = new ArrayList<>();
 
     public MyAdapter(Context context, Fragment fragment) {
         this.context = context;
 
         if (fragment instanceof AllFragment) {
-            coins = new Coins(context).getCoins();
+            coins = new CoinDAO(context).getCoins();
         } else if (fragment instanceof NewFragment) {
-            coins = new Coins(context).getMoreCoins();
+            coins = new CoinDAO(context).getMoreCoins();
         }
     }
 

@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.the_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -46,8 +45,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.addTab(tabLayout.newTab().setText("S-MINT"));
 
 
-
-
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter adapter = new PageViewAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
@@ -57,21 +54,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
-
-
-
-
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
@@ -79,17 +68,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerToggle.syncState();
 
 
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
-
-
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
