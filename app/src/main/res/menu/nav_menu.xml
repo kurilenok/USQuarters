@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="My Collection">
+        <menu>
+            <item
+                android:id="@+id/nav_menu_a"
+                android:icon="@drawable/ic_work_black_24dp"
+                android:title="ALL I HAVE" />
+            <item
+                android:id="@+id/nav_menu_b"
+                android:icon="@drawable/ic_find_in_page_black_24dp"
+                android:title="ALL I NEED" />
+            <item
+                android:id="@+id/nav_menu_c"
+                android:icon="@drawable/ic_extension_black_24dp"
+                android:title="FOR SWAP" />
+            <item
+                android:id="@+id/nav_menu_d"
+                android:icon="@drawable/ic_bug_report_black_24dp"
+                android:title="LESS THAN unc" />
+        </menu>
+    </item>
+
+
+    <item android:title="Coin Series">
+        <menu>
+            <item
+                android:id="@+id/nav_menu_1"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Statehood Quarters" />
+            <item
+                android:id="@+id/nav_menu_2"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="State Park Quarters" />
+            <item
+                android:id="@+id/nav_menu_3"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="President Dollars" />
+            <item
+                android:id="@+id/nav_menu_4"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Native American Dollars" />
+        </menu>
+    </item>
+
+
+</menu>
