@@ -28,6 +28,17 @@ public class Coins {
         return coins;
     }
 
+    public List<Coin> getMoreCoins() {
+        List<Coin> coins = new ArrayList<>();
+        String[] names = context.getResources().getStringArray(R.array.parks);
+
+        for (int i = 0; i <= 4; i++) {
+            coins.add(new Coin(context.getResources().getIdentifier("us".concat(String.valueOf(i)),
+                    "drawable", context.getPackageName()), names[i]));
+        }
+        return coins;
+    }
+
     class Coin {
 
         int imageId;

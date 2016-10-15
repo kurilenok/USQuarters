@@ -1,7 +1,9 @@
 package org.numisoft.usquarters;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.view.Choreographer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,16 +22,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     Context context;
     List<Coins.Coin> coins = new ArrayList<>();
 
-    public MyAdapter(Context context) {
+    public MyAdapter(Context context, Fragment fragment) {
         this.context = context;
-        coins = new Coins(context).getCoins();
+
+        if (fragment instanceof AllFragment) {
+            coins = new Coins(context).getCoins();
+        } else if (fragment instanceof NewFragment) {
+            coins = new Coins(context).getMoreCoins();
+        }
     }
 
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.item, parent, false);
-
 
         return new ViewHolder(view);
     }
@@ -50,7 +56,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 //            holder.tvName.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
 //            holder.tvName.setTextColor(context.getResources().getColor(R.color.textPrimary));
         }
-
 
     }
 

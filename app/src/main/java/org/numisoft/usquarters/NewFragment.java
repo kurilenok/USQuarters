@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 /**
  * Created by kukolka on 22.08.16.
  */
-public class AllFragment extends Fragment {
+public class NewFragment extends Fragment {
 
     @Nullable
     @Override
@@ -26,6 +26,7 @@ public class AllFragment extends Fragment {
 
         RecyclerView.LayoutManager layoutManager =
                 new GridLayoutManager(view.getContext(), (int) (dpWidth / 160));
+
         RecyclerView rvMain = (RecyclerView) view.findViewById(R.id.rvMain);
         rvMain.setLayoutManager(layoutManager);
         rvMain.setAdapter(new MyAdapter(view.getContext(), this));

@@ -25,6 +25,12 @@
         <item>Bombay Hook</item>
     </string-array>
 
-
+    <string-array name="parks">
+        <item>Hot Springs</item>
+        <item>Gettysburg</item>
+        <item>Glacier</item>
+        <item>Vicksburg</item>
+        <item>Saratoga</item>
+    </string-array>
 
 </resources>
