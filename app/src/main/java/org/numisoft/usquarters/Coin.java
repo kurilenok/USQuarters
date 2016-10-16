@@ -8,9 +8,16 @@ public class Coin {
 
     String name;
     String year;
+    String imageString;
     int imageId;
 
     public Coin() {}
+
+    public Coin(String name, String year, String imageString) {
+        this.name = name;
+        this.year = year;
+        this.imageString = imageString;
+    }
 
     public Coin(String name, String year, int imageId) {
         this.name = name;
@@ -24,6 +31,14 @@ public class Coin {
 
     public void setImageId(int imageId) {
         this.imageId = imageId;
+    }
+
+    public String getImageString() {
+        return imageString;
+    }
+
+    public void setImageString(String imageString) {
+        this.imageString = imageString;
     }
 
     public String getName() {

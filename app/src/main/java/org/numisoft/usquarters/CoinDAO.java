@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,11 +25,14 @@ public class CoinDAO {
         DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM coins", new String[]{});
-        cursor.moveToFirst();
 
         List<Coin> coins = new ArrayList<>();
 
-        while (cursor.moveToNext()) {
+        if (!cursor.moveToFirst()) {
+            return coins;
+        }
+
+        do {
             Coin coin = new Coin();
 
             coin.setName(cursor.getString(cursor.getColumnIndex("name")));
@@ -40,7 +45,8 @@ public class CoinDAO {
                             context.getPackageName()));
             coins.add(coin);
 
-        }
+        } while (cursor.moveToNext());
+
         return coins;
     }
 
@@ -53,7 +59,7 @@ public class CoinDAO {
                     names[i],
                     "P\n2000",
                     context.getResources().getIdentifier("us".concat(String.valueOf(i)),
-                    "drawable", context.getPackageName())));
+                            "drawable", context.getPackageName())));
         }
         return coins;
     }
@@ -67,9 +73,12 @@ public class CoinDAO {
                     names[i],
                     "D\n2000",
                     context.getResources().getIdentifier("us".concat(String.valueOf(i)),
-                    "drawable", context.getPackageName())));
+                            "drawable", context.getPackageName())));
         }
         return coins;
     }
+
+
+
 
 }
