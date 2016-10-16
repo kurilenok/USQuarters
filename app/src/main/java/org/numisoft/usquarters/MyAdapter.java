@@ -13,6 +13,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.numisoft.usquarters.R.id.tvYear;
+
 /**
  * Created by kukolka on 14.08.16.
  */
@@ -28,6 +30,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             coins = new CoinDAO(context).getCoins();
         } else if (fragment instanceof NewFragment) {
             coins = new CoinDAO(context).getMoreCoins();
+        } else if (fragment instanceof DBFragment) {
+            coins = new CoinDAO(context).getCoinsFromDB();
         }
     }
 
@@ -43,6 +47,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
         holder.ivCoin.setImageResource(coins.get(position).getImageId());
         holder.tvName.setText(coins.get(position).getName());
+        holder.tvYear.setText(coins.get(position).getYear());
 
 
         if (coins.get(position).getName().equalsIgnoreCase("Gettysburg") ||
@@ -67,12 +72,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         ImageView ivCoin;
         TextView tvName;
+        TextView tvYear;
         RelativeLayout rlHolder;
 
         public ViewHolder(View itemView) {
             super(itemView);
             ivCoin = (ImageView) itemView.findViewById(R.id.ivCoin);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
+            tvYear = (TextView) itemView.findViewById(R.id.tvYear);
             rlHolder = (RelativeLayout) itemView.findViewById(R.id.rlHolder);
         }
     }

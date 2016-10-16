@@ -6,12 +6,16 @@ package org.numisoft.usquarters;
 
 public class Coin {
 
-    int imageId;
     String name;
+    String year;
+    int imageId;
 
-    public Coin(int imageId, String name) {
-        this.imageId = imageId;
+    public Coin() {}
+
+    public Coin(String name, String year, int imageId) {
         this.name = name;
+        this.year = year;
+        this.imageId = imageId;
     }
 
     public int getImageId() {
@@ -28,6 +32,14 @@ public class Coin {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 
 }

@@ -1,6 +1,8 @@
 package org.numisoft.usquarters;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +18,42 @@ public class CoinDAO {
         this.context = context;
     }
 
+
+    public List<Coin> getCoinsFromDB() {
+        DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM coins", new String[]{});
+        cursor.moveToFirst();
+
+        List<Coin> coins = new ArrayList<>();
+
+        while (cursor.moveToNext()) {
+            Coin coin = new Coin();
+
+            coin.setName(cursor.getString(cursor.getColumnIndex("name")));
+            coin.setYear(cursor.getString(cursor.getColumnIndex("year")));
+            coin.setImageId(
+
+                    context.getResources().getIdentifier(
+                            cursor.getString(cursor.getColumnIndex("imageId")),
+                            "drawable",
+                            context.getPackageName()));
+            coins.add(coin);
+
+        }
+        return coins;
+    }
+
     public List<Coin> getCoins() {
         List<Coin> coins = new ArrayList<>();
         String[] names = context.getResources().getStringArray(R.array.provinces);
 
         for (int i = 0; i <= 7; i++) {
-            coins.add(new Coin(context.getResources().getIdentifier("us".concat(String.valueOf(i)),
-                    "drawable", context.getPackageName()), names[i]));
+            coins.add(new Coin(
+                    names[i],
+                    "P\n2000",
+                    context.getResources().getIdentifier("us".concat(String.valueOf(i)),
+                    "drawable", context.getPackageName())));
         }
         return coins;
     }
@@ -32,8 +63,11 @@ public class CoinDAO {
         String[] names = context.getResources().getStringArray(R.array.parks);
 
         for (int i = 0; i <= 4; i++) {
-            coins.add(new Coin(context.getResources().getIdentifier("us".concat(String.valueOf(i)),
-                    "drawable", context.getPackageName()), names[i]));
+            coins.add(new Coin(
+                    names[i],
+                    "D\n2000",
+                    context.getResources().getIdentifier("us".concat(String.valueOf(i)),
+                    "drawable", context.getPackageName())));
         }
         return coins;
     }

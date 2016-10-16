@@ -20,11 +20,13 @@ public class PageViewAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-
             return new AllFragment();
         }
-        else {
+        else if (position == 1) {
             return new NewFragment();
+        }
+        else {
+            return new DBFragment();
         }
     }
 
