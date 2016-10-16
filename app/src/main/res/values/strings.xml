@@ -33,4 +33,6 @@
         <item>Saratoga</item>
     </string-array>
 
+    <string name="json">test.json</string>
+
 </resources>

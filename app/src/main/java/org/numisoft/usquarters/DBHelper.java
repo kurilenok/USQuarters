@@ -32,7 +32,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Gson gson = new Gson();
         Type listType = new TypeToken<List<Coin>>(){}.getType();
-        List<Coin> coins = gson.fromJson(JSONConverter.convert(context, "test.json"), listType);
+        List<Coin> coins = gson.fromJson(
+                JSONConverter.convert(context, context.getResources().getString(R.string.json)), listType);
 
         for (Coin c : coins) {
             ContentValues cv = new ContentValues();
@@ -41,11 +42,6 @@ public class DBHelper extends SQLiteOpenHelper {
             cv.put("imageId", c.getImageString());
             db.insert("coins", null, cv);
         }
-
-//        db.execSQL("INSERT INTO coins (name, year, imageId) VALUES ('Hot Springs', '2010', 'us0')");
-//        db.execSQL("INSERT INTO coins (name, year, imageId) VALUES ('Gettysburg', '2011', 'us1')");
-//        db.execSQL("INSERT INTO coins (name, year, imageId) VALUES ('Glacier', '2011', 'us2')");
-
     }
 
     @Override
