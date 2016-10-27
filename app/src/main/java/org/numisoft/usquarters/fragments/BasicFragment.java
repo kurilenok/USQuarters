@@ -1,4 +1,4 @@
-package org.numisoft.usquarters;
+package org.numisoft.usquarters.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,10 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.numisoft.usquarters.adapters.MyAdapter;
+import org.numisoft.usquarters.R;
+
 /**
  * Created by kukolka on 10/16/2016.
  */
-public class DBFragment extends Fragment {
+public class BasicFragment extends Fragment {
 
     @Nullable
     @Override

@@ -1,7 +1,5 @@
-package org.numisoft.usquarters;
+package org.numisoft.usquarters.activities;
 
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -11,16 +9,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TableLayout;
-import android.widget.Toast;
+
+import org.numisoft.usquarters.R;
+import org.numisoft.usquarters.adapters.PageViewAdapter;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -37,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.the_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("State Parks");
+        getSupportActionBar().setTitle("America The Beautiful");
 
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -71,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.addHeaderView(View.inflate(this, R.layout.nav_header, null));
         navigationView.setNavigationItemSelectedListener(this);
 
 

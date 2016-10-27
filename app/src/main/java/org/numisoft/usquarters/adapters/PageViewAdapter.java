@@ -1,8 +1,12 @@
-package org.numisoft.usquarters;
+package org.numisoft.usquarters.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import org.numisoft.usquarters.fragments.AllFragment;
+import org.numisoft.usquarters.fragments.DMintFragment;
+import org.numisoft.usquarters.fragments.SMintFragment;
 
 /**
  * Created by kukolka on 22.08.16.
@@ -23,10 +27,10 @@ public class PageViewAdapter extends FragmentStatePagerAdapter {
             return new AllFragment();
         }
         else if (position == 1) {
-            return new NewFragment();
+            return new DMintFragment();
         }
         else {
-            return new DBFragment();
+            return new SMintFragment();
         }
     }
 

@@ -1,4 +1,4 @@
-package org.numisoft.usquarters;
+package org.numisoft.usquarters.adapters;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -10,10 +10,16 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.numisoft.usquarters.R;
+import org.numisoft.usquarters.fragments.AllFragment;
+import org.numisoft.usquarters.fragments.DMintFragment;
+import org.numisoft.usquarters.fragments.SMintFragment;
+import org.numisoft.usquarters.models.Coin;
+import org.numisoft.usquarters.models.CoinDAO;
+import org.numisoft.usquarters.models.Mint;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.numisoft.usquarters.R.id.tvYear;
 
 /**
  * Created by kukolka on 14.08.16.
@@ -28,10 +34,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         if (fragment instanceof AllFragment) {
             coins = new CoinDAO(context).getCoins();
-        } else if (fragment instanceof NewFragment) {
-            coins = new CoinDAO(context).getMoreCoins();
-        } else if (fragment instanceof DBFragment) {
-            coins = new CoinDAO(context).getCoinsFromDB();
+        } else if (fragment instanceof DMintFragment) {
+            coins = new CoinDAO(context).getCoinsByMint(Mint.D);
+        } else if (fragment instanceof SMintFragment) {
+            coins = new CoinDAO(context).getCoinsByMint(Mint.S);
         }
     }
 
@@ -45,14 +51,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
+
+
         holder.ivCoin.setImageResource(coins.get(position).getImageId());
         holder.tvName.setText(coins.get(position).getName());
         holder.tvYear.setText(coins.get(position).getYear());
 
 
         if (coins.get(position).getName().equalsIgnoreCase("Gettysburg") ||
-                coins.get(position).getName().equalsIgnoreCase("Saratoga")) {
+                coins.get(position).getName().equalsIgnoreCase("Homestead") ||
+                coins.get(position).getName().equalsIgnoreCase("Adams")) {
             holder.rlHolder.setBackground(context.getDrawable(R.drawable.backgr));
+
+
 //            holder.tvName.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
 //            holder.tvName.setTextColor(context.getResources().getColor(R.color.white));
 

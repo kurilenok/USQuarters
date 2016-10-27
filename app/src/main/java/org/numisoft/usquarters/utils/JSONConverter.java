@@ -1,4 +1,4 @@
-package org.numisoft.usquarters;
+package org.numisoft.usquarters.utils;
 
 import android.content.Context;
 

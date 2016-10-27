@@ -1,4 +1,4 @@
-package org.numisoft.usquarters;
+package org.numisoft.usquarters.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,10 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.numisoft.usquarters.adapters.MyAdapter;
+import org.numisoft.usquarters.R;
+
 /**
  * Created by kukolka on 22.08.16.
  */
-public class NewFragment extends Fragment {
+public class AllFragment extends Fragment {
 
     @Nullable
     @Override
@@ -26,7 +29,6 @@ public class NewFragment extends Fragment {
 
         RecyclerView.LayoutManager layoutManager =
                 new GridLayoutManager(view.getContext(), (int) (dpWidth / 160));
-
         RecyclerView rvMain = (RecyclerView) view.findViewById(R.id.rvMain);
         rvMain.setLayoutManager(layoutManager);
         rvMain.setAdapter(new MyAdapter(view.getContext(), this));

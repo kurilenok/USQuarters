@@ -1,5 +1,11 @@
 [
-  {"name": "Hot Springs", "year": "2010", "imageString": "us0"},
-  {"name": "Gettysburg", "year": "2011", "imageString": "us1"},
-  {"name": "Glacier", "year": "2011", "imageString": "us2"}
+  {"name": "Washington", "year": "2007", "imageString": "dollar1"},
+  {"name": "Adams", "year": "2007", "imageString": "dollar2"},
+  {"name": "Jefferson", "year": "2007", "imageString": "dollar3"},
+  {"name": "Madison", "year": "2007", "imageString": "dollar4"},
+  {"name": "Monroe", "year": "2008", "imageString": "dollar5"},
+  {"name": "Adams", "year": "2008", "imageString": "dollar6"},
+  {"name": "Jackson", "year": "2008", "imageString": "dollar7"},
+  {"name": "Van Buren", "year": "2008", "imageString": "dollar8"}
+
 ]

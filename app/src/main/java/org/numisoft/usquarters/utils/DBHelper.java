@@ -1,4 +1,4 @@
-package org.numisoft.usquarters;
+package org.numisoft.usquarters.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.numisoft.usquarters.R;
+import org.numisoft.usquarters.models.Coin;
 
 import java.lang.reflect.Type;
 import java.util.List;

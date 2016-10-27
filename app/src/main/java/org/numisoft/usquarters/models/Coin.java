@@ -1,4 +1,4 @@
-package org.numisoft.usquarters;
+package org.numisoft.usquarters.models;
 
 /**
  * Created by kukolka on 10/15/2016.
@@ -9,6 +9,8 @@ public class Coin {
     String name;
     String year;
     String imageString;
+    String mint;
+    String category;
     int imageId;
 
     public Coin() {}

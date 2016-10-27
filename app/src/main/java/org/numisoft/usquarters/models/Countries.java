@@ -1,6 +1,8 @@
-package org.numisoft.usquarters;
+package org.numisoft.usquarters.models;
 
 import android.content.Context;
+
+import org.numisoft.usquarters.R;
 
 import java.util.ArrayList;
 import java.util.List;
