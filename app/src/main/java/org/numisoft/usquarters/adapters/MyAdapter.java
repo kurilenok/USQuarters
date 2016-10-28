@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.numisoft.usquarters.R;
 import org.numisoft.usquarters.fragments.AllFragment;
@@ -43,7 +44,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(context).inflate(R.layout.item, parent, false);
 
         return new ViewHolder(view);
@@ -52,25 +52,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
 
-
         holder.ivCoin.setImageResource(coins.get(position).getImageId());
         holder.tvName.setText(coins.get(position).getName());
         holder.tvYear.setText(coins.get(position).getYear());
-
 
         if (coins.get(position).getName().equalsIgnoreCase("Gettysburg") ||
                 coins.get(position).getName().equalsIgnoreCase("Homestead") ||
                 coins.get(position).getName().equalsIgnoreCase("Adams")) {
             holder.rlHolder.setBackground(context.getDrawable(R.drawable.backgr));
-
-
-//            holder.tvName.setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
-//            holder.tvName.setTextColor(context.getResources().getColor(R.color.white));
-
-        } else {
-//            holder.tvName.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
-//            holder.tvName.setTextColor(context.getResources().getColor(R.color.textPrimary));
         }
+
+
 
     }
 
@@ -79,7 +71,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return coins.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView ivCoin;
         TextView tvName;
@@ -92,6 +86,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvYear = (TextView) itemView.findViewById(R.id.tvYear);
             rlHolder = (RelativeLayout) itemView.findViewById(R.id.rlHolder);
+            rlHolder.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(context, coins.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
         }
     }
 }

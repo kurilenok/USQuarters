@@ -9,7 +9,6 @@
         android:layout_height="48dp"
         android:background="@drawable/ripple">
 
-
         <ImageView
             android:id="@+id/ivNavFlag"
             android:layout_width="24dp"
@@ -29,7 +28,6 @@
             android:layout_marginLeft="72dp"
             android:text="Finland"
             android:textSize="16sp" />
-
 
     </RelativeLayout>
 

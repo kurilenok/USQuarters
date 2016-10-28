@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="My Collection">
+    <!--<item android:title="My Collection">
         <menu>
             <item
                 android:id="@+id/nav_menu_a"
@@ -20,27 +20,48 @@
                 android:icon="@drawable/ic_bug_report_black_24dp"
                 android:title="LESS THAN unc" />
         </menu>
-    </item>
+    </item>-->
 
 
-    <item android:title="Coin Series">
+    <item android:title="Quarters">
         <menu>
             <item
                 android:id="@+id/nav_menu_1"
-                android:icon="@drawable/ic_label_black_24dp"
-                android:title="Statehood Quarters" />
+                android:icon="@drawable/fr"
+                android:title="Statehood Quarters (P)" />
             <item
                 android:id="@+id/nav_menu_2"
                 android:icon="@drawable/ic_label_black_24dp"
-                android:title="State Park Quarters" />
+                android:title="Statehood Quarters (D)" />
             <item
                 android:id="@+id/nav_menu_3"
                 android:icon="@drawable/ic_label_black_24dp"
-                android:title="President Dollars" />
+                android:title="America the Beautiful (P)" />
             <item
                 android:id="@+id/nav_menu_4"
                 android:icon="@drawable/ic_label_black_24dp"
-                android:title="Native American Dollars" />
+                android:title="America the Beautiful (D)" />
+        </menu>
+    </item>
+
+    <item android:title="Dollars">
+        <menu>
+            <item
+                android:id="@+id/nav_menu_5"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Native American Dollars (P)" />
+            <item
+                android:id="@+id/nav_menu_6"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Native American Dollars (D)" />
+            <item
+                android:id="@+id/nav_menu_7"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Presidential Dollars (P)" />
+            <item
+                android:id="@+id/nav_menu_8"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Presidential Dollars (D)" />
         </menu>
     </item>
 

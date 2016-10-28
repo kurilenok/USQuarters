@@ -28,20 +28,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+// Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.the_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("America The Beautiful");
 
-
+// Tabs
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
-        tabLayout.addTab(tabLayout.newTab().setText("P-MINT"));
-        tabLayout.addTab(tabLayout.newTab().setText("D-MINT"));
-        tabLayout.addTab(tabLayout.newTab().setText("S-MINT"));
+        tabLayout.addTab(tabLayout.newTab().setText("ALL"));
+//        tabLayout.addTab(tabLayout.newTab().setText("HAVE"));
+        tabLayout.addTab(tabLayout.newTab().setText("NEED"));
+        tabLayout.addTab(tabLayout.newTab().setText("SWAP"));
+        tabLayout.addTab(tabLayout.newTab().setText("UNC-"));
 
-
+// Pager
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter adapter = new PageViewAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
@@ -59,17 +61,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+// Drawer
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-
+// Navigation
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.addHeaderView(View.inflate(this, R.layout.nav_header, null));
+//        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
-
-
 
     }
 
@@ -81,11 +83,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

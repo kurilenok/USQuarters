@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:background="@color/accent"
-
     android:layout_height="wrap_content">
 
 
@@ -11,6 +10,9 @@
         android:text="Numisoft"
         android:layout_width="match_parent"
         android:id="@+id/textView"
-        android:gravity="center"
-        android:layout_height="104dp" />
+        android:layout_marginBottom="-8dp"
+        android:gravity="bottom"
+        android:layout_height="112dp"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
 </LinearLayout>
