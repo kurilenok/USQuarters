@@ -31,7 +31,9 @@ public class AllFragment extends Fragment {
                 new GridLayoutManager(view.getContext(), (int) (dpWidth / 160));
         RecyclerView rvMain = (RecyclerView) view.findViewById(R.id.rvMain);
         rvMain.setLayoutManager(layoutManager);
-        rvMain.setAdapter(new MyAdapter(view.getContext(), this));
+        rvMain.setAdapter(new MyAdapter(view.getContext(), this, getActivity()));
+
+
 
         return view;
     }

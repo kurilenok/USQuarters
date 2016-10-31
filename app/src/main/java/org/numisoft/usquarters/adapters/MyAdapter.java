@@ -1,6 +1,11 @@
 package org.numisoft.usquarters.adapters;
 
+
+import android.app.Activity;
+
+import android.app.FragmentManager;
 import android.content.Context;
+
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +19,7 @@ import android.widget.Toast;
 import org.numisoft.usquarters.R;
 import org.numisoft.usquarters.fragments.AllFragment;
 import org.numisoft.usquarters.fragments.DMintFragment;
+import org.numisoft.usquarters.fragments.PopupFragment;
 import org.numisoft.usquarters.fragments.SMintFragment;
 import org.numisoft.usquarters.models.Coin;
 import org.numisoft.usquarters.models.CoinDAO;
@@ -29,9 +35,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     Context context;
     List<Coin> coins = new ArrayList<>();
+    Activity activity;
 
-    public MyAdapter(Context context, Fragment fragment) {
+    public MyAdapter(Context context, Fragment fragment, Activity activity) {
         this.context = context;
+        this.activity = activity;
 
         if (fragment instanceof AllFragment) {
             coins = new CoinDAO(context).getCoins();
@@ -66,6 +74,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     }
 
+
+
     @Override
     public int getItemCount() {
         return coins.size();
@@ -91,7 +101,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(context, coins.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
+
+            String select = coins.get(getAdapterPosition()).getName();
+
+            FragmentManager manager = activity.getFragmentManager();
+            PopupFragment popup = PopupFragment.getInstance(select);
+            popup.show(manager, "1");
+
         }
     }
 }

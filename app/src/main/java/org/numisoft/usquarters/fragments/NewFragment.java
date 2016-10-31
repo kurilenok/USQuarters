@@ -32,7 +32,7 @@ public class NewFragment extends Fragment {
 
         RecyclerView rvMain = (RecyclerView) view.findViewById(R.id.rvMain);
         rvMain.setLayoutManager(layoutManager);
-        rvMain.setAdapter(new MyAdapter(view.getContext(), this));
+        rvMain.setAdapter(new MyAdapter(view.getContext(), this, getActivity()));
 
         return view;
     }
