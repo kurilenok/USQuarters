@@ -23,7 +23,7 @@ import org.numisoft.usquarters.fragments.PopupFragment;
 import org.numisoft.usquarters.fragments.SMintFragment;
 import org.numisoft.usquarters.models.Coin;
 import org.numisoft.usquarters.models.CoinDAO;
-import org.numisoft.usquarters.models.Mint;
+import org.numisoft.usquarters.models.Theme;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,17 +36,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     Context context;
     List<Coin> coins = new ArrayList<>();
     Activity activity;
+    Theme theme;
 
     public MyAdapter(Context context, Fragment fragment, Activity activity) {
         this.context = context;
         this.activity = activity;
 
         if (fragment instanceof AllFragment) {
-            coins = new CoinDAO(context).getCoins();
+            this.theme = ((AllFragment) fragment).getTheme();
+            coins = new CoinDAO(context).getCoinsByTheme(theme);
         } else if (fragment instanceof DMintFragment) {
-            coins = new CoinDAO(context).getCoinsByMint(Mint.D);
+            coins = new CoinDAO(context).getCoinsByTheme(Theme.PARKS_D);
         } else if (fragment instanceof SMintFragment) {
-            coins = new CoinDAO(context).getCoinsByMint(Mint.S);
+            coins = new CoinDAO(context).getCoinsByTheme(Theme.STATES_D);
         }
     }
 
@@ -69,12 +71,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 coins.get(position).getName().equalsIgnoreCase("Adams")) {
             holder.rlHolder.setBackground(context.getDrawable(R.drawable.backgr));
         }
-
-
-
     }
-
-
 
     @Override
     public int getItemCount() {

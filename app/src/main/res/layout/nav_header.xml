@@ -10,9 +10,9 @@
         android:text="Numisoft"
         android:layout_width="match_parent"
         android:id="@+id/textView"
-        android:layout_marginBottom="-8dp"
+        android:layout_marginBottom="-9dp"
         android:gravity="bottom"
-        android:layout_height="112dp"
+        android:layout_height="55dp"
         android:textColor="@color/white"
         android:textSize="24sp" />
 </LinearLayout>

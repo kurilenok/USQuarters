@@ -11,6 +11,7 @@ public class Coin {
     String imageString;
     String mint;
     String category;
+    String theme;
     int imageId;
 
     public Coin() {}
@@ -21,10 +22,11 @@ public class Coin {
         this.imageString = imageString;
     }
 
-    public Coin(String name, String year, int imageId) {
+    public Coin(String name, String year, int imageId, String theme) {
         this.name = name;
         this.year = year;
         this.imageId = imageId;
+        this.theme = theme;
     }
 
     public int getImageId() {
@@ -59,4 +61,11 @@ public class Coin {
         this.year = year;
     }
 
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
 }

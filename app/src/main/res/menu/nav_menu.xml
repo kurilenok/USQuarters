@@ -27,7 +27,7 @@
         <menu>
             <item
                 android:id="@+id/nav_menu_1"
-                android:icon="@drawable/fr"
+                android:icon="@drawable/ic_label_black_24dp"
                 android:title="Statehood Quarters (P)" />
             <item
                 android:id="@+id/nav_menu_2"

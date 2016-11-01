@@ -12,11 +12,19 @@ import android.view.ViewGroup;
 
 import org.numisoft.usquarters.adapters.MyAdapter;
 import org.numisoft.usquarters.R;
+import org.numisoft.usquarters.models.Theme;
 
 /**
  * Created by kukolka on 22.08.16.
  */
 public class AllFragment extends Fragment {
+
+    Theme theme;
+
+    public AllFragment(Theme theme) {
+        this.theme = theme;
+    }
+
 
     @Nullable
     @Override
@@ -33,8 +41,14 @@ public class AllFragment extends Fragment {
         rvMain.setLayoutManager(layoutManager);
         rvMain.setAdapter(new MyAdapter(view.getContext(), this, getActivity()));
 
-
-
         return view;
+    }
+
+    public Theme getTheme() {
+        return theme;
+    }
+
+    public void setTheme(Theme theme) {
+        this.theme = theme;
     }
 }

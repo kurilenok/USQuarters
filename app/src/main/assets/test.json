@@ -1,11 +1,22 @@
 [
-  {"name": "Washington", "year": "2007", "imageString": "dollar1"},
-  {"name": "Adams", "year": "2007", "imageString": "dollar2"},
-  {"name": "Jefferson", "year": "2007", "imageString": "dollar3"},
-  {"name": "Madison", "year": "2007", "imageString": "dollar4"},
-  {"name": "Monroe", "year": "2008", "imageString": "dollar5"},
-  {"name": "Adams", "year": "2008", "imageString": "dollar6"},
-  {"name": "Jackson", "year": "2008", "imageString": "dollar7"},
-  {"name": "Van Buren", "year": "2008", "imageString": "dollar8"}
+  {"name": "Washington", "year": "2007", "imageString": "dollar1", "theme":"Presidential Dollars (P)"},
+  {"name": "Adams", "year": "2007", "imageString": "dollar2", "theme":"Presidential Dollars (P)"},
+  {"name": "Jefferson", "year": "2007", "imageString": "dollar3", "theme":"Presidential Dollars (P)"},
+  {"name": "Madison", "year": "2007", "imageString": "dollar4", "theme":"Presidential Dollars (P)"},
+  {"name": "Monroe", "year": "2008", "imageString": "dollar5", "theme":"Presidential Dollars (P)"},
+  {"name": "Adams", "year": "2008", "imageString": "dollar6", "theme":"Presidential Dollars (P)"},
+  {"name": "Jackson", "year": "2008", "imageString": "dollar7", "theme":"Presidential Dollars (P)"},
+  {"name": "Van Buren", "year": "2008", "imageString": "dollar8", "theme":"Presidential Dollars (P)"},
+
+  {"name": "Gettysburg", "year": "2011", "imageString": "park1", "theme":"America the Beautiful (P)"},
+  {"name": "Everglades", "year": "2014", "imageString": "park2", "theme":"America the Beautiful (P)"},
+  {"name": "Shenandoah", "year": "2014", "imageString": "park3", "theme":"America the Beautiful (P)"},
+  {"name": "Homestead", "year": "2015", "imageString": "park4", "theme":"America the Beautiful (P)"},
+  {"name": "Shawnee", "year": "2016", "imageString": "park5", "theme":"America the Beautiful (P)"},
+  {"name": "Harpers Ferry", "year": "2016", "imageString": "park6", "theme":"America the Beautiful (P)"},
+  {"name": "Roosevelt Park", "year": "2016", "imageString": "park7", "theme":"America the Beautiful (P)"},
+
+  {"name": "Oklahoma", "year": "2008", "imageString": "state1", "theme":"Statehood Quarters (P)"},
+  {"name": "Arizona", "year": "2008", "imageString": "state2", "theme":"Statehood Quarters (P)"}
 
 ]

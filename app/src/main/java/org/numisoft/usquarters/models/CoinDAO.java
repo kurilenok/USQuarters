@@ -55,37 +55,10 @@ public class CoinDAO {
         return coins;
     }
 
-    public List<Coin> getCoins() {
-        List<Coin> coins = new ArrayList<>();
-        String[] names = context.getResources().getStringArray(R.array.provinces);
-
-        for (int i = 0; i <= 6; i++) {
-            coins.add(new Coin(
-                    names[i],
-                    "2000",
-                    context.getResources().getIdentifier("park".concat(String.valueOf(i+1)),
-                            "drawable", context.getPackageName())));
-        }
-        return coins;
-    }
-
-    public List<Coin> getMoreCoins() {
-        List<Coin> coins = new ArrayList<>();
-        String[] names = context.getResources().getStringArray(R.array.parks);
-
-        for (int i = 0; i <= 4; i++) {
-            coins.add(new Coin(names[i], "D\n2000",
-                    context.getResources().getIdentifier("us".concat(String.valueOf(i)),
-                            "drawable", context.getPackageName())));
-        }
-        return coins;
-    }
-
-
-    public List<Coin> getCoinsByMint(Mint mint) {
+    public List<Coin> getCoinsByTheme(Theme theme) {
         DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM coins", new String[]{});
+        Cursor cursor = db.rawQuery("SELECT * FROM coins WHERE theme = '" + theme.value + "'", new String[]{});
 
         List<Coin> coins = new ArrayList<>();
 
