@@ -1,15 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/AlertDialog.AppCompat.Light">
 
     <TextView
         android:text="!!!!!!"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvPopup"
+        android:id="@+id/tvName"
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:gravity="center" />
+
+    <TextView
+        android:text="!!!!!!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvYear"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:gravity="center" />
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:text="+1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bAdd" />
+
+    <TextView
+        android:text="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvUNC"
+        android:textSize="24dp"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:text="-1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bDelete" />
+
 </LinearLayout>

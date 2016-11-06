@@ -3,6 +3,7 @@ package org.numisoft.usquarters.models;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import org.numisoft.usquarters.utils.DBHelper;
 import org.numisoft.usquarters.R;
@@ -13,11 +14,11 @@ import java.util.List;
 /**
  * Created by kukolka on 14.08.16.
  */
-public class CoinDAO {
+public class CoinDao {
 
     Context context;
 
-    public CoinDAO(Context context) {
+    public CoinDao(Context context) {
         this.context = context;
     }
 
@@ -58,7 +59,10 @@ public class CoinDAO {
     public List<Coin> getCoinsByTheme(Theme theme) {
         DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM coins WHERE theme = '" + theme.value + "'", new String[]{});
+        Cursor cursor = db.rawQuery(
+                "SELECT name, year, imageId, unc FROM catalog " +
+                        "LEFT OUTER JOIN collection ON catalog.imageId = collection.coinId " +
+                        "WHERE theme = ? ", new String[]{theme.value});
 
         List<Coin> coins = new ArrayList<>();
 
@@ -71,12 +75,11 @@ public class CoinDAO {
 
             coin.setName(cursor.getString(cursor.getColumnIndex("name")));
             coin.setYear(cursor.getString(cursor.getColumnIndex("year")));
-            coin.setImageId(
+            coin.setUnc(cursor.getInt(cursor.getColumnIndex("unc")));
 
-                    context.getResources().getIdentifier(
-                            cursor.getString(cursor.getColumnIndex("imageId")),
-                            "drawable",
-                            context.getPackageName()));
+            coin.setImageId(context.getResources().getIdentifier(
+                    cursor.getString(cursor.getColumnIndex("imageId")),
+                    "drawable", context.getPackageName()));
             coins.add(coin);
 
         } while (cursor.moveToNext());
@@ -87,4 +90,68 @@ public class CoinDAO {
 
         return coins;
     }
+
+    public Coin getCoinById(String imageId) {
+        DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(
+                "SELECT * FROM coins WHERE imageId = ?", new String[]{imageId});
+        cursor.moveToFirst();
+
+        Coin coin = new Coin();
+
+        coin.setName(cursor.getString(cursor.getColumnIndex("name")));
+        coin.setYear(cursor.getString(cursor.getColumnIndex("year")));
+
+        cursor.close();
+        db.close();
+        dbHelper.close();
+
+        return coin;
+    }
+
+    public void addUnc(Coin coin) {
+        DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        int newUnc = coin.getUnc() + 1;
+
+        db.execSQL("UPDATE collection SET unc = " + newUnc + " WHERE coinId = 'park6'");
+
+        Cursor cursor = db.rawQuery(
+                "SELECT * FROM collection WHERE coinId = 'park6'", new String[]{});
+        cursor.moveToFirst();
+
+        Toast.makeText(context, Integer.toString(cursor.getInt(cursor.getColumnIndex("unc"))),
+                Toast.LENGTH_SHORT).show();
+
+        cursor.close();
+
+
+        db.close();
+        dbHelper.close();
+    }
+
+    public void deleteUnc(Coin coin) {
+        DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        int newUnc = coin.getUnc() - 1;
+
+        db.execSQL("UPDATE collection SET unc = " + newUnc + " WHERE coinId = 'park6'");
+
+
+        Cursor cursor = db.rawQuery(
+                "SELECT * FROM collection WHERE coinId = 'park6'", new String[]{});
+        cursor.moveToFirst();
+
+        Toast.makeText(context, Integer.toString(cursor.getInt(cursor.getColumnIndex("unc"))),
+                Toast.LENGTH_SHORT).show();
+
+        cursor.close();
+        db.close();
+        dbHelper.close();
+    }
+
+
 }

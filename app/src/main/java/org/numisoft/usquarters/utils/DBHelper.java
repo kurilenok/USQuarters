@@ -30,8 +30,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("DROP TABLE IF EXISTS coins");
-        db.execSQL("CREATE TABLE coins (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, " +
+        db.execSQL("DROP TABLE IF EXISTS catalog");
+        db.execSQL("CREATE TABLE catalog (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, " +
                 "year TEXT, imageId TEXT, theme TEXT)");
 
         Gson gson = new Gson();
@@ -45,8 +45,19 @@ public class DBHelper extends SQLiteOpenHelper {
             cv.put("year", c.getYear());
             cv.put("imageId", c.getImageString());
             cv.put("theme", c.getTheme());
-            db.insert("coins", null, cv);
+            db.insert("catalog", null, cv);
         }
+
+        db.execSQL("DROP TABLE IF EXISTS collection");
+        db.execSQL("CREATE TABLE collection (id INTEGER PRIMARY KEY AUTOINCREMENT, coinId TEXT, " +
+                "unc INTEGER)");
+
+        ContentValues cv2 = new ContentValues();
+        cv2.put("coinId", "park6");
+        cv2.put("unc", 25);
+        db.insert("collection", null, cv2);
+
+
     }
 
     @Override

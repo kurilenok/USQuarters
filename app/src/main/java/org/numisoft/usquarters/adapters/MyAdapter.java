@@ -2,10 +2,7 @@ package org.numisoft.usquarters.adapters;
 
 
 import android.app.Activity;
-
-import android.app.FragmentManager;
 import android.content.Context;
-
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,15 +11,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.numisoft.usquarters.R;
 import org.numisoft.usquarters.fragments.AllFragment;
 import org.numisoft.usquarters.fragments.DMintFragment;
-import org.numisoft.usquarters.fragments.PopupFragment;
 import org.numisoft.usquarters.fragments.SMintFragment;
 import org.numisoft.usquarters.models.Coin;
-import org.numisoft.usquarters.models.CoinDAO;
+import org.numisoft.usquarters.models.CoinDao;
 import org.numisoft.usquarters.models.Theme;
 
 import java.util.ArrayList;
@@ -34,21 +29,29 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     Context context;
-    List<Coin> coins = new ArrayList<>();
+    public List<Coin> coins = new ArrayList<>();
     Activity activity;
     Theme theme;
+
+    public interface OnDataClickListener {
+        void onDataClick(Coin coin, int position);
+    }
+
+    private OnDataClickListener mOnDataClickListener;
+
 
     public MyAdapter(Context context, Fragment fragment, Activity activity) {
         this.context = context;
         this.activity = activity;
+        this.mOnDataClickListener = (OnDataClickListener) fragment;
 
         if (fragment instanceof AllFragment) {
             this.theme = ((AllFragment) fragment).getTheme();
-            coins = new CoinDAO(context).getCoinsByTheme(theme);
+            coins = new CoinDao(context).getCoinsByTheme(theme);
         } else if (fragment instanceof DMintFragment) {
-            coins = new CoinDAO(context).getCoinsByTheme(Theme.PARKS_D);
+            coins = new CoinDao(context).getCoinsByTheme(Theme.PARKS_D);
         } else if (fragment instanceof SMintFragment) {
-            coins = new CoinDAO(context).getCoinsByTheme(Theme.STATES_D);
+            coins = new CoinDao(context).getCoinsByTheme(Theme.STATES_D);
         }
     }
 
@@ -60,17 +63,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(MyAdapter.ViewHolder holder, final int position) {
 
         holder.ivCoin.setImageResource(coins.get(position).getImageId());
         holder.tvName.setText(coins.get(position).getName());
         holder.tvYear.setText(coins.get(position).getYear());
+        holder.tvUNC.setText(Integer.toString(coins.get(position).getUnc()));
 
         if (coins.get(position).getName().equalsIgnoreCase("Gettysburg") ||
                 coins.get(position).getName().equalsIgnoreCase("Homestead") ||
                 coins.get(position).getName().equalsIgnoreCase("Adams")) {
             holder.rlHolder.setBackground(context.getDrawable(R.drawable.backgr));
         }
+
+
+        holder.ivCoin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                int currentUnc = coins.get(position).getUnc();
+//                coins.get(position).setUnc(currentUnc + 1);
+//                notifyItemChanged(position);
+                mOnDataClickListener.onDataClick(coins.get(position), position);
+            }
+        });
+
+
     }
 
     @Override
@@ -79,12 +96,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
 
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView ivCoin;
         TextView tvName;
         TextView tvYear;
+        TextView tvUNC;
         RelativeLayout rlHolder;
 
         public ViewHolder(View itemView) {
@@ -92,18 +109,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             ivCoin = (ImageView) itemView.findViewById(R.id.ivCoin);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvYear = (TextView) itemView.findViewById(R.id.tvYear);
+            tvUNC = (TextView) itemView.findViewById(R.id.tvUNC);
             rlHolder = (RelativeLayout) itemView.findViewById(R.id.rlHolder);
-            rlHolder.setOnClickListener(this);
+//            rlHolder.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+            Coin coin = coins.get(getAdapterPosition());
 
-            String select = coins.get(getAdapterPosition()).getName();
-
-            FragmentManager manager = activity.getFragmentManager();
-            PopupFragment popup = PopupFragment.getInstance(select);
-            popup.show(manager, "1");
+//            FragmentManager manager = ((FragmentActivity) activity).getSupportFragmentManager();
+//            PopupFragment popup = PopupFragment.getInstance(coin);
+//            popup.show(manager, "1");
 
         }
     }

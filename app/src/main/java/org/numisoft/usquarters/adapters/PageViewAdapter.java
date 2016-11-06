@@ -22,11 +22,16 @@ public class PageViewAdapter extends FragmentStatePagerAdapter {
         super(fm);
         this.numberOfTabs = numberOfTabs;
         this.theme = theme;
+
+        Fragment fragment = getItem(0);
+        fm.beginTransaction().add(fragment, "all_fragment").commit();
+
     }
 
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
+
             return new AllFragment(theme);
         }
         else if (position == 1) {
