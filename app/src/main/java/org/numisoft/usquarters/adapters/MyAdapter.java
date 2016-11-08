@@ -28,10 +28,9 @@ import java.util.List;
  */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    Context context;
-    public List<Coin> coins = new ArrayList<>();
-    Activity activity;
-    Theme theme;
+    private Context context;
+    private List<Coin> coins = new ArrayList<>();
+    private Theme theme;
 
     public interface OnDataClickListener {
         void onDataClick(Coin coin, int position);
@@ -40,14 +39,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private OnDataClickListener mOnDataClickListener;
 
 
-    public MyAdapter(Context context, Fragment fragment, Activity activity) {
+    public MyAdapter(Context context, Fragment fragment) {
         this.context = context;
-        this.activity = activity;
         this.mOnDataClickListener = (OnDataClickListener) fragment;
 
         if (fragment instanceof AllFragment) {
-            this.theme = ((AllFragment) fragment).getTheme();
+            theme = ((AllFragment) fragment).getTheme() == null ?
+                    Theme.PRESIDENTS_P : ((AllFragment) fragment).getTheme();
             coins = new CoinDao(context).getCoinsByTheme(theme);
+
         } else if (fragment instanceof DMintFragment) {
             coins = new CoinDao(context).getCoinsByTheme(Theme.PARKS_D);
         } else if (fragment instanceof SMintFragment) {
@@ -65,24 +65,38 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder holder, final int position) {
 
-        holder.ivCoin.setImageResource(coins.get(position).getImageId());
+        int imageResource = context.getResources().getIdentifier(
+                coins.get(position).getImageId(), "drawable", context.getPackageName());
+
+        holder.ivCoin.setImageResource(imageResource);
         holder.tvName.setText(coins.get(position).getName());
         holder.tvYear.setText(coins.get(position).getYear());
+        holder.tvProof.setText("Proof: " + Integer.toString(coins.get(position).getProof()));
         holder.tvUNC.setText(Integer.toString(coins.get(position).getUnc()));
+        holder.tvFine.setText("F: " + Integer.toString(coins.get(position).getFine()));
+        holder.tvGood.setText("G: " + Integer.toString(coins.get(position).getGood()));
 
-        if (coins.get(position).getName().equalsIgnoreCase("Gettysburg") ||
-                coins.get(position).getName().equalsIgnoreCase("Homestead") ||
-                coins.get(position).getName().equalsIgnoreCase("Adams")) {
-            holder.rlHolder.setBackground(context.getDrawable(R.drawable.backgr));
-        }
 
+        if (coins.get(position).getUnc() + coins.get(position).getProof()
+                + coins.get(position).getFine() + coins.get(position).getGood() > 0)
+            holder.rlHolder.setBackground(context.getDrawable(R.drawable.background));
+        else holder.rlHolder.setBackground(context.getDrawable(R.drawable.background_zero));
+
+        if (coins.get(position).getProof() == 0) holder.tvProof.setTextSize(0);
+        else holder.tvProof.setTextSize(10);
+
+        if (coins.get(position).getUnc() == 0) holder.tvUNC.setTextSize(0);
+        else holder.tvUNC.setTextSize(14);
+
+        if (coins.get(position).getFine() == 0) holder.tvFine.setTextSize(0);
+        else holder.tvFine.setTextSize(10);
+
+        if (coins.get(position).getGood() == 0) holder.tvGood.setTextSize(0);
+        else holder.tvGood.setTextSize(10);
 
         holder.ivCoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                int currentUnc = coins.get(position).getUnc();
-//                coins.get(position).setUnc(currentUnc + 1);
-//                notifyItemChanged(position);
                 mOnDataClickListener.onDataClick(coins.get(position), position);
             }
         });
@@ -101,7 +115,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         ImageView ivCoin;
         TextView tvName;
         TextView tvYear;
-        TextView tvUNC;
+        TextView tvUNC, tvProof, tvFine, tvGood;
         RelativeLayout rlHolder;
 
         public ViewHolder(View itemView) {
@@ -109,7 +123,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             ivCoin = (ImageView) itemView.findViewById(R.id.ivCoin);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvYear = (TextView) itemView.findViewById(R.id.tvYear);
+            tvProof = (TextView) itemView.findViewById(R.id.tvProof);
             tvUNC = (TextView) itemView.findViewById(R.id.tvUNC);
+            tvFine = (TextView) itemView.findViewById(R.id.tvFine);
+            tvGood = (TextView) itemView.findViewById(R.id.tvGood);
             rlHolder = (RelativeLayout) itemView.findViewById(R.id.rlHolder);
 //            rlHolder.setOnClickListener(this);
         }
@@ -123,5 +140,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 //            popup.show(manager, "1");
 
         }
+    }
+
+    public List<Coin> getCoins() {
+        return coins;
+    }
+
+    public void setCoins(List<Coin> coins) {
+        this.coins = coins;
     }
 }

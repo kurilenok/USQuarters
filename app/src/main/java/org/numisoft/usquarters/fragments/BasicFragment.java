@@ -33,7 +33,7 @@ public class BasicFragment extends Fragment implements RecyclerView.OnItemTouchL
         RecyclerView rvMain = (RecyclerView) view.findViewById(R.id.rvMain);
         rvMain.setLayoutManager(new GridLayoutManager(view.getContext(), (int) (dpWidth / 160)));
         rvMain.addOnItemTouchListener(this);
-        rvMain.setAdapter(new MyAdapter(view.getContext(), this, getActivity()));
+        rvMain.setAdapter(new MyAdapter(view.getContext(), this));
 
         return view;
     }

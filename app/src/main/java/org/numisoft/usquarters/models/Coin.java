@@ -8,31 +8,23 @@ import java.io.Serializable;
 
 public class Coin implements Serializable {
 
-    String name;
-    String year;
-    String imageString;
-    String mint;
-    String category;
-    String theme;
-    int imageId;
-    int unc;
+    private String name;
+    private String year;
+    private String theme;
+    private String imageId;
+    private int proof;
+    private int unc;
+    private int fine;
+    private int good;
 
     public Coin() {}
 
-    public int getImageId() {
+    public String getImageId() {
         return imageId;
     }
 
-    public void setImageId(int imageId) {
+    public void setImageId(String imageId) {
         this.imageId = imageId;
-    }
-
-    public String getImageString() {
-        return imageString;
-    }
-
-    public void setImageString(String imageString) {
-        this.imageString = imageString;
     }
 
     public String getName() {
@@ -65,5 +57,29 @@ public class Coin implements Serializable {
 
     public void setUnc(int unc) {
         this.unc = unc;
+    }
+
+    public int getProof() {
+        return proof;
+    }
+
+    public void setProof(int proof) {
+        this.proof = proof;
+    }
+
+    public int getFine() {
+        return fine;
+    }
+
+    public void setFine(int fine) {
+        this.fine = fine;
+    }
+
+    public int getGood() {
+        return good;
+    }
+
+    public void setGood(int good) {
+        this.good = good;
     }
 }

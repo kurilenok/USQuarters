@@ -43,21 +43,24 @@ public class DBHelper extends SQLiteOpenHelper {
             ContentValues cv = new ContentValues();
             cv.put("name", c.getName());
             cv.put("year", c.getYear());
-            cv.put("imageId", c.getImageString());
+            cv.put("imageId", c.getImageId());
             cv.put("theme", c.getTheme());
             db.insert("catalog", null, cv);
         }
 
         db.execSQL("DROP TABLE IF EXISTS collection");
         db.execSQL("CREATE TABLE collection (id INTEGER PRIMARY KEY AUTOINCREMENT, coinId TEXT, " +
-                "unc INTEGER)");
+                "proof INTEGER, unc INTEGER, fine INTEGER, good INTEGER)");
 
-        ContentValues cv2 = new ContentValues();
-        cv2.put("coinId", "park6");
-        cv2.put("unc", 25);
-        db.insert("collection", null, cv2);
-
-
+        for (Coin c : coins) {
+            ContentValues cv2 = new ContentValues();
+            cv2.put("coinId", c.getImageId());
+            cv2.put("proof", 0);
+            cv2.put("unc", 0);
+            cv2.put("fine", 0);
+            cv2.put("good", 0);
+            db.insert("collection", null, cv2);
+        }
     }
 
     @Override

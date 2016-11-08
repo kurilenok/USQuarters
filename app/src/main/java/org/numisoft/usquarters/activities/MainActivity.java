@@ -104,16 +104,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
                         tabLayout.getTabCount(), Theme.STATES_P);
                 viewPager.setAdapter(pagerAdapter);
+                getSupportActionBar().setTitle("Statehood Quarters (P)");
                 break;
             case R.id.nav_menu_3:
                 pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
                         tabLayout.getTabCount(), Theme.PARKS_P);
                 viewPager.setAdapter(pagerAdapter);
+                getSupportActionBar().setTitle("America the Beautiful (P)");
                 break;
             case R.id.nav_menu_7:
                 pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
                         tabLayout.getTabCount(), Theme.PRESIDENTS_P);
                 viewPager.setAdapter(pagerAdapter);
+                getSupportActionBar().setTitle("Presidential Dollars (P)");
                 break;
         }
 

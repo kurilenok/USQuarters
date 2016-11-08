@@ -1,22 +1,22 @@
 [
-  {"name": "Washington", "year": "2007", "imageString": "dollar1", "theme":"Presidential Dollars (P)"},
-  {"name": "Adams", "year": "2007", "imageString": "dollar2", "theme":"Presidential Dollars (P)"},
-  {"name": "Jefferson", "year": "2007", "imageString": "dollar3", "theme":"Presidential Dollars (P)"},
-  {"name": "Madison", "year": "2007", "imageString": "dollar4", "theme":"Presidential Dollars (P)"},
-  {"name": "Monroe", "year": "2008", "imageString": "dollar5", "theme":"Presidential Dollars (P)"},
-  {"name": "Adams", "year": "2008", "imageString": "dollar6", "theme":"Presidential Dollars (P)"},
-  {"name": "Jackson", "year": "2008", "imageString": "dollar7", "theme":"Presidential Dollars (P)"},
-  {"name": "Van Buren", "year": "2008", "imageString": "dollar8", "theme":"Presidential Dollars (P)"},
+  {"name": "Washington", "year": "2007", "imageId": "dollar1", "theme":"Presidential Dollars (P)"},
+  {"name": "Adams", "year": "2007", "imageId": "dollar2", "theme":"Presidential Dollars (P)"},
+  {"name": "Jefferson", "year": "2007", "imageId": "dollar3", "theme":"Presidential Dollars (P)"},
+  {"name": "Madison", "year": "2007", "imageId": "dollar4", "theme":"Presidential Dollars (P)"},
+  {"name": "Monroe", "year": "2008", "imageId": "dollar5", "theme":"Presidential Dollars (P)"},
+  {"name": "Adams", "year": "2008", "imageId": "dollar6", "theme":"Presidential Dollars (P)"},
+  {"name": "Jackson", "year": "2008", "imageId": "dollar7", "theme":"Presidential Dollars (P)"},
+  {"name": "Van Buren", "year": "2008", "imageId": "dollar8", "theme":"Presidential Dollars (P)"},
 
-  {"name": "Gettysburg", "year": "2011", "imageString": "park1", "theme":"America the Beautiful (P)"},
-  {"name": "Everglades", "year": "2014", "imageString": "park2", "theme":"America the Beautiful (P)"},
-  {"name": "Shenandoah", "year": "2014", "imageString": "park3", "theme":"America the Beautiful (P)"},
-  {"name": "Homestead", "year": "2015", "imageString": "park4", "theme":"America the Beautiful (P)"},
-  {"name": "Shawnee", "year": "2016", "imageString": "park5", "theme":"America the Beautiful (P)"},
-  {"name": "Harpers Ferry", "year": "2016", "imageString": "park6", "theme":"America the Beautiful (P)"},
-  {"name": "Roosevelt Park", "year": "2016", "imageString": "park7", "theme":"America the Beautiful (P)"},
+  {"name": "Gettysburg", "year": "2011", "imageId": "park1", "theme":"America the Beautiful (P)"},
+  {"name": "Everglades", "year": "2014", "imageId": "park2", "theme":"America the Beautiful (P)"},
+  {"name": "Shenandoah", "year": "2014", "imageId": "park3", "theme":"America the Beautiful (P)"},
+  {"name": "Homestead", "year": "2015", "imageId": "park4", "theme":"America the Beautiful (P)"},
+  {"name": "Shawnee", "year": "2016", "imageId": "park5", "theme":"America the Beautiful (P)"},
+  {"name": "Harpers Ferry", "year": "2016", "imageId": "park6", "theme":"America the Beautiful (P)"},
+  {"name": "Roosevelt Park", "year": "2016", "imageId": "park7", "theme":"America the Beautiful (P)"},
 
-  {"name": "Oklahoma", "year": "2008", "imageString": "state1", "theme":"Statehood Quarters (P)"},
-  {"name": "Arizona", "year": "2008", "imageString": "state2", "theme":"Statehood Quarters (P)"}
+  {"name": "Oklahoma", "year": "2008", "imageId": "state1", "theme":"Statehood Quarters (P)"},
+  {"name": "Arizona", "year": "2008", "imageId": "state2", "theme":"Statehood Quarters (P)"}
 
 ]

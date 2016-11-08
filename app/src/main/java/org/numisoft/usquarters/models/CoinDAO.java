@@ -23,65 +23,27 @@ public class CoinDao {
     }
 
 
-    public List<Coin> getCoinsFromDB() {
-        DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM coins", new String[]{});
-
-        List<Coin> coins = new ArrayList<>();
-
-        if (!cursor.moveToFirst()) {
-            return coins;
-        }
-
-        do {
-            Coin coin = new Coin();
-
-            coin.setName(cursor.getString(cursor.getColumnIndex("name")));
-            coin.setYear(cursor.getString(cursor.getColumnIndex("year")));
-            coin.setImageId(
-
-                    context.getResources().getIdentifier(
-                            cursor.getString(cursor.getColumnIndex("imageId")),
-                            "drawable",
-                            context.getPackageName()));
-            coins.add(coin);
-
-        } while (cursor.moveToNext());
-
-        cursor.close();
-        db.close();
-        dbHelper.close();
-
-        return coins;
-    }
-
     public List<Coin> getCoinsByTheme(Theme theme) {
         DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(
-                "SELECT name, year, imageId, unc FROM catalog " +
+                "SELECT name, year, imageId, proof, unc, fine, good FROM catalog " +
                         "LEFT OUTER JOIN collection ON catalog.imageId = collection.coinId " +
-                        "WHERE theme = ? ", new String[]{theme.value});
+                        "WHERE theme = ?", new String[]{theme.value});
 
         List<Coin> coins = new ArrayList<>();
-
-        if (!cursor.moveToFirst()) {
-            return coins;
-        }
+        if (!cursor.moveToFirst()) return coins;
 
         do {
             Coin coin = new Coin();
-
             coin.setName(cursor.getString(cursor.getColumnIndex("name")));
             coin.setYear(cursor.getString(cursor.getColumnIndex("year")));
+            coin.setProof(cursor.getInt(cursor.getColumnIndex("proof")));
             coin.setUnc(cursor.getInt(cursor.getColumnIndex("unc")));
-
-            coin.setImageId(context.getResources().getIdentifier(
-                    cursor.getString(cursor.getColumnIndex("imageId")),
-                    "drawable", context.getPackageName()));
+            coin.setFine(cursor.getInt(cursor.getColumnIndex("fine")));
+            coin.setGood(cursor.getInt(cursor.getColumnIndex("good")));
+            coin.setImageId(cursor.getString(cursor.getColumnIndex("imageId")));
             coins.add(coin);
-
         } while (cursor.moveToNext());
 
         cursor.close();
@@ -91,67 +53,34 @@ public class CoinDao {
         return coins;
     }
 
-    public Coin getCoinById(String imageId) {
+//    public Coin getCoinById(String imageId) {
+//        DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
+//        SQLiteDatabase db = dbHelper.getReadableDatabase();
+//        Cursor cursor = db.rawQuery(
+//                "SELECT * FROM coins WHERE imageId = ?", new String[]{imageId});
+//        cursor.moveToFirst();
+//
+//        Coin coin = new Coin();
+//
+//        coin.setName(cursor.getString(cursor.getColumnIndex("name")));
+//        coin.setYear(cursor.getString(cursor.getColumnIndex("year")));
+//
+//        cursor.close();
+//        db.close();
+//        dbHelper.close();
+//
+//        return coin;
+//    }
+
+    public void updateCoin(Coin coin) {
         DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery(
-                "SELECT * FROM coins WHERE imageId = ?", new String[]{imageId});
-        cursor.moveToFirst();
-
-        Coin coin = new Coin();
-
-        coin.setName(cursor.getString(cursor.getColumnIndex("name")));
-        coin.setYear(cursor.getString(cursor.getColumnIndex("year")));
-
-        cursor.close();
-        db.close();
-        dbHelper.close();
-
-        return coin;
-    }
-
-    public void addUnc(Coin coin) {
-        DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        int newUnc = coin.getUnc() + 1;
-
-        db.execSQL("UPDATE collection SET unc = " + newUnc + " WHERE coinId = 'park6'");
-
-        Cursor cursor = db.rawQuery(
-                "SELECT * FROM collection WHERE coinId = 'park6'", new String[]{});
-        cursor.moveToFirst();
-
-        Toast.makeText(context, Integer.toString(cursor.getInt(cursor.getColumnIndex("unc"))),
-                Toast.LENGTH_SHORT).show();
-
-        cursor.close();
-
-
+        db.execSQL(
+                "UPDATE collection SET proof = ?, unc = ?, fine = ?, good = ? WHERE coinId = ?",
+                new Object[]{coin.getProof(), coin.getUnc(), coin.getFine(), coin.getGood(),
+                        coin.getImageId()});
         db.close();
         dbHelper.close();
     }
-
-    public void deleteUnc(Coin coin) {
-        DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-
-        int newUnc = coin.getUnc() - 1;
-
-        db.execSQL("UPDATE collection SET unc = " + newUnc + " WHERE coinId = 'park6'");
-
-
-        Cursor cursor = db.rawQuery(
-                "SELECT * FROM collection WHERE coinId = 'park6'", new String[]{});
-        cursor.moveToFirst();
-
-        Toast.makeText(context, Integer.toString(cursor.getInt(cursor.getColumnIndex("unc"))),
-                Toast.LENGTH_SHORT).show();
-
-        cursor.close();
-        db.close();
-        dbHelper.close();
-    }
-
 
 }

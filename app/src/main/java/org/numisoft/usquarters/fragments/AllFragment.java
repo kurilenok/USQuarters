@@ -1,5 +1,6 @@
 package org.numisoft.usquarters.fragments;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -27,6 +28,9 @@ public class AllFragment extends Fragment implements MyAdapter.OnDataClickListen
     MyAdapter myAdapter;
     int clicked;
 
+    public AllFragment() {
+    }
+
     public AllFragment(Theme theme) {
         this.theme = theme;
     }
@@ -47,7 +51,7 @@ public class AllFragment extends Fragment implements MyAdapter.OnDataClickListen
         rvMain = (RecyclerView) view.findViewById(R.id.rvMain);
         rvMain.setLayoutManager(layoutManager);
 
-        myAdapter = new MyAdapter(view.getContext(), this, getActivity());
+        myAdapter = new MyAdapter(view.getContext(), this);
 
         rvMain.setAdapter(myAdapter);
         return view;
@@ -61,12 +65,11 @@ public class AllFragment extends Fragment implements MyAdapter.OnDataClickListen
         this.theme = theme;
     }
 
-    public void onSomethingHappen() {
-        int currentUnc = myAdapter.coins.get(clicked).getUnc();
-        myAdapter.coins.get(clicked).setUnc(currentUnc + 1);
-        myAdapter.notifyDataSetChanged();
-    }
 
+    public void doSomething(Coin coin) {
+        myAdapter.getCoins().set(clicked, coin);
+        myAdapter.notifyItemChanged(clicked);
+    }
 
     @Override
     public void onDataClick(Coin coin, int position) {
