@@ -3,10 +3,8 @@ package org.numisoft.usquarters.models;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
 
 import org.numisoft.usquarters.utils.DBHelper;
-import org.numisoft.usquarters.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +25,10 @@ public class CoinDao {
         DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(
-                "SELECT name, year, imageId, proof, unc, fine, good FROM catalog " +
-                        "LEFT OUTER JOIN collection ON catalog.imageId = collection.coinId " +
+                "SELECT name, fullname, description, year, imageId, proof, unc, fine, good " +
+                        "FROM catalog " +
+                        "LEFT OUTER JOIN collection " +
+                        "ON catalog.imageId = collection.coinId " +
                         "WHERE theme = ?", new String[]{theme.value});
 
         List<Coin> coins = new ArrayList<>();
@@ -37,12 +37,14 @@ public class CoinDao {
         do {
             Coin coin = new Coin();
             coin.setName(cursor.getString(cursor.getColumnIndex("name")));
+            coin.setFullname(cursor.getString(cursor.getColumnIndex("fullname")));
             coin.setYear(cursor.getString(cursor.getColumnIndex("year")));
             coin.setProof(cursor.getInt(cursor.getColumnIndex("proof")));
             coin.setUnc(cursor.getInt(cursor.getColumnIndex("unc")));
             coin.setFine(cursor.getInt(cursor.getColumnIndex("fine")));
             coin.setGood(cursor.getInt(cursor.getColumnIndex("good")));
             coin.setImageId(cursor.getString(cursor.getColumnIndex("imageId")));
+            coin.setDescription(cursor.getString(cursor.getColumnIndex("description")));
             coins.add(coin);
         } while (cursor.moveToNext());
 

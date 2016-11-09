@@ -36,11 +36,21 @@
             android:text="!!!!!!"
             android:textColor="@color/white" />
 
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_below="@id/tvYear"
+            android:layout_marginTop="4dp"
+            android:text="Proof" />
+
         <ImageView
             android:id="@+id/ivCoin"
             android:layout_width="match_parent"
             android:layout_height="220dp"
-            android:layout_below="@id/tvYear"
+            android:layout_below="@id/tvDescription"
             android:layout_marginBottom="-4dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/park6" />

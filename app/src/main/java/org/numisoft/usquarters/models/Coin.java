@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class Coin implements Serializable {
 
     private String name;
+    private String fullname;
     private String year;
     private String theme;
     private String imageId;
@@ -16,6 +17,7 @@ public class Coin implements Serializable {
     private int unc;
     private int fine;
     private int good;
+    private String description;
 
     public Coin() {}
 
@@ -81,5 +83,21 @@ public class Coin implements Serializable {
 
     public void setGood(int good) {
         this.good = good;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 }

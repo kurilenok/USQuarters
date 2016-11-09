@@ -58,6 +58,7 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
 
         TextView tvName = (TextView) view.findViewById(R.id.tvName);
         TextView tvYear = (TextView) view.findViewById(R.id.tvYear);
+        TextView tvDescription = (TextView) view.findViewById(R.id.tvDescription);
         ImageView ivCoin = (ImageView) view.findViewById(R.id.ivCoin);
 
         tvUNC = (TextView) view.findViewById(R.id.tvUNC);
@@ -80,8 +81,13 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         Button bUncClose = (Button) view.findViewById(R.id.bUncClose);
         bUncClose.setOnClickListener(this);
 
-        tvName.setText(coin.getName());
+        tvName.setText(coin.getFullname());
         tvYear.setText(coin.getYear());
+        tvDescription.setText(coin.getDescription());
+        if (coin.getDescription().equals("-")) tvDescription.setTextSize(0);
+        else tvDescription.setTextSize(14);
+
+
         ivCoin.setImageResource(getResources().getIdentifier(coin.getImageId(), "drawable", getContext().getPackageName()));
 
         tvProof.setText(Integer.toString(coin.getProof()));

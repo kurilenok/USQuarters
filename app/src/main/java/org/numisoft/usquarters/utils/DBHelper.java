@@ -31,8 +31,10 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS catalog");
-        db.execSQL("CREATE TABLE catalog (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, " +
-                "year TEXT, imageId TEXT, theme TEXT)");
+        db.execSQL("CREATE TABLE catalog (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT, fullname TEXT, " +
+                "year TEXT, imageId TEXT, " +
+                "theme TEXT, description TEXT)");
 
         Gson gson = new Gson();
         Type listType = new TypeToken<List<Coin>>(){}.getType();
@@ -42,6 +44,8 @@ public class DBHelper extends SQLiteOpenHelper {
         for (Coin c : coins) {
             ContentValues cv = new ContentValues();
             cv.put("name", c.getName());
+            cv.put("fullname", c.getFullname());
+            cv.put("description", c.getDescription());
             cv.put("year", c.getYear());
             cv.put("imageId", c.getImageId());
             cv.put("theme", c.getTheme());
@@ -49,8 +53,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         db.execSQL("DROP TABLE IF EXISTS collection");
-        db.execSQL("CREATE TABLE collection (id INTEGER PRIMARY KEY AUTOINCREMENT, coinId TEXT, " +
-                "proof INTEGER, unc INTEGER, fine INTEGER, good INTEGER)");
+        db.execSQL("CREATE TABLE collection (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "coinId TEXT, proof INTEGER, unc INTEGER, fine INTEGER, good INTEGER)");
 
         for (Coin c : coins) {
             ContentValues cv2 = new ContentValues();
