@@ -32,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("DROP TABLE IF EXISTS catalog");
         db.execSQL("CREATE TABLE catalog (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "name TEXT, fullname TEXT, " +
+                "name TEXT, fullname TEXT, mintage TEXT, " +
                 "year TEXT, imageId TEXT, " +
                 "theme TEXT, description TEXT)");
 
@@ -46,6 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
             cv.put("name", c.getName());
             cv.put("fullname", c.getFullname());
             cv.put("description", c.getDescription());
+            cv.put("mintage", c.getMintage());
             cv.put("year", c.getYear());
             cv.put("imageId", c.getImageId());
             cv.put("theme", c.getTheme());

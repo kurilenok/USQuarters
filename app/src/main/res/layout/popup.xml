@@ -19,40 +19,41 @@
             android:layout_gravity="center"
             android:background="@color/primary"
             android:gravity="center"
-            android:paddingTop="6dp"
+            android:paddingTop="10dp"
             android:text="!!!!!!"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/tvYear"
+            android:id="@+id/tvDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvName"
             android:layout_gravity="center"
             android:background="@color/primary"
             android:gravity="center"
-            android:paddingBottom="6dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="10dp"
             android:text="!!!!!!"
             android:textColor="@color/white" />
 
 
         <TextView
-            android:id="@+id/tvDescription"
+            android:id="@+id/tvMintage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_below="@id/tvYear"
-            android:layout_marginTop="4dp"
+            android:layout_below="@id/tvDescription"
+            android:layout_margin="6dp"
             android:text="Proof" />
 
         <ImageView
             android:id="@+id/ivCoin"
             android:layout_width="match_parent"
             android:layout_height="220dp"
-            android:layout_below="@id/tvDescription"
-            android:layout_marginBottom="-4dp"
-            android:layout_marginTop="8dp"
+            android:layout_below="@id/tvMintage"
+            android:layout_marginBottom="-6dp"
+            android:layout_marginTop="2dp"
             android:src="@drawable/park6" />
 
         <TableLayout
@@ -221,6 +222,16 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="26dp"
             android:text="Add &amp; CLOSE" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:src="@drawable/oklahoma"
+            android:layout_marginTop="2dp"
+
+            android:layout_alignTop="@+id/tvDescription"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/ivSeal" />
 
     </RelativeLayout>
 

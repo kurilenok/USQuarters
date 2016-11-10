@@ -3,6 +3,7 @@ package org.numisoft.usquarters.fragments;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 
 import android.support.v4.app.DialogFragment;
@@ -57,9 +58,11 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         cv.setClipToOutline(true);
 
         TextView tvName = (TextView) view.findViewById(R.id.tvName);
-        TextView tvYear = (TextView) view.findViewById(R.id.tvYear);
         TextView tvDescription = (TextView) view.findViewById(R.id.tvDescription);
+        TextView tvMintage = (TextView) view.findViewById(R.id.tvMintage);
         ImageView ivCoin = (ImageView) view.findViewById(R.id.ivCoin);
+        ImageView ivSeal = (ImageView) view.findViewById(R.id.ivSeal);
+
 
         tvUNC = (TextView) view.findViewById(R.id.tvUNC);
         tvProof = (TextView) view.findViewById(R.id.tvProof);
@@ -82,13 +85,23 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         bUncClose.setOnClickListener(this);
 
         tvName.setText(coin.getFullname());
-        tvYear.setText(coin.getYear());
         tvDescription.setText(coin.getDescription());
-        if (coin.getDescription().equals("-")) tvDescription.setTextSize(0);
-        else tvDescription.setTextSize(14);
-
+        tvMintage.setText("Mint P: " + coin.getMintage());
 
         ivCoin.setImageResource(getResources().getIdentifier(coin.getImageId(), "drawable", getContext().getPackageName()));
+
+        ivSeal.setImageResource(0);
+        if (coin.getDescription().equalsIgnoreCase("nebraska"))
+            ivSeal.setImageResource(R.drawable.nebraska);
+        if (coin.getName().equalsIgnoreCase("arizona"))
+            ivSeal.setImageResource(R.drawable.arizona);
+        if (coin.getName().equalsIgnoreCase("oklahoma"))
+            ivSeal.setImageResource(R.drawable.oklahoma);
+        if (coin.getDescription().equalsIgnoreCase("florida"))
+            ivSeal.setImageResource(R.drawable.florida);
+        if (coin.getDescription().equalsIgnoreCase("west virginia"))
+            ivSeal.setImageResource(R.drawable.wvirginia);
+
 
         tvProof.setText(Integer.toString(coin.getProof()));
         bAddProof.setOnClickListener(this);

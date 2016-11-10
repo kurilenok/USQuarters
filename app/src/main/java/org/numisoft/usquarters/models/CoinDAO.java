@@ -25,7 +25,8 @@ public class CoinDao {
         DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(
-                "SELECT name, fullname, description, year, imageId, proof, unc, fine, good " +
+                "SELECT name, fullname, description, year, imageId, " +
+                        "proof, unc, fine, good, mintage " +
                         "FROM catalog " +
                         "LEFT OUTER JOIN collection " +
                         "ON catalog.imageId = collection.coinId " +
@@ -45,6 +46,7 @@ public class CoinDao {
             coin.setGood(cursor.getInt(cursor.getColumnIndex("good")));
             coin.setImageId(cursor.getString(cursor.getColumnIndex("imageId")));
             coin.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+            coin.setMintage(cursor.getString(cursor.getColumnIndex("mintage")));
             coins.add(coin);
         } while (cursor.moveToNext());
 

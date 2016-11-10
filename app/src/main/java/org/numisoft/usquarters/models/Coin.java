@@ -18,6 +18,7 @@ public class Coin implements Serializable {
     private int fine;
     private int good;
     private String description;
+    private String mintage;
 
     public Coin() {}
 
@@ -99,5 +100,13 @@ public class Coin implements Serializable {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public String getMintage() {
+        return mintage;
+    }
+
+    public void setMintage(String mintage) {
+        this.mintage = mintage;
     }
 }
