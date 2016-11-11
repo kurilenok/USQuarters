@@ -37,6 +37,22 @@
             android:text="West Virginia"
             android:textColor="@color/white" />
 
+        <TextView
+            android:layout_width="28dp"
+            android:layout_height="80dp"
+            android:background="@color/accent"
+            android:text="P"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <FrameLayout
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:layout_below="@id/tvDescription"
+            android:layout_alignParentStart="true"/>
 
         <TextView
             android:id="@+id/tvMintage"
@@ -45,7 +61,7 @@
             android:gravity="center"
             android:layout_below="@id/tvDescription"
             android:layout_margin="8dp"
-            android:text="MINT: 219,241,000" />
+            android:text="MINT: 219,241,000 " />
 
         <ImageView
             android:id="@+id/ivCoin"

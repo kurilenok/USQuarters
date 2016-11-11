@@ -85,7 +85,7 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
 
         tvName.setText(coin.getFullname());
         tvDescription.setText(coin.getDescription());
-        tvMintage.setText("MINT: " + coin.getMintage());
+        tvMintage.setText("MINT: " + coin.getMintage() + " ");
 
         ivCoin.setImageResource(getResources().getIdentifier(coin.getImageId(), "drawable", getContext().getPackageName()));
 
@@ -100,6 +100,10 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
             ivSeal.setImageResource(R.drawable.florida);
         if (coin.getDescription().equalsIgnoreCase("west virginia"))
             ivSeal.setImageResource(R.drawable.wvirginia);
+        if (coin.getDescription().equalsIgnoreCase("pennsylvania"))
+            ivSeal.setImageResource(R.drawable.pennsylvania);
+        if (coin.getDescription().equalsIgnoreCase("illinois"))
+            ivSeal.setImageResource(R.drawable.illinois);
 
 
         tvProof.setText(Integer.toString(coin.getProof()));
