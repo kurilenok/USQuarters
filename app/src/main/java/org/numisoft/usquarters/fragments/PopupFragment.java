@@ -80,13 +80,12 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         bDeleteFine = (Button) view.findViewById(R.id.bDeleteFine);
         bDeleteGood = (Button) view.findViewById(R.id.bDeleteGood);
 
-
         Button bUncClose = (Button) view.findViewById(R.id.bUncClose);
         bUncClose.setOnClickListener(this);
 
         tvName.setText(coin.getFullname());
         tvDescription.setText(coin.getDescription());
-        tvMintage.setText("Mint P: " + coin.getMintage());
+        tvMintage.setText("MINT: " + coin.getMintage());
 
         ivCoin.setImageResource(getResources().getIdentifier(coin.getImageId(), "drawable", getContext().getPackageName()));
 

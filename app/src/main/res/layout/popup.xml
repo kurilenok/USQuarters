@@ -20,7 +20,7 @@
             android:background="@color/primary"
             android:gravity="center"
             android:paddingTop="10dp"
-            android:text="!!!!!!"
+            android:text="Harpers Ferry Nat'l Park"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -32,9 +32,9 @@
             android:layout_gravity="center"
             android:background="@color/primary"
             android:gravity="center"
-            android:paddingTop="6dp"
-            android:paddingBottom="10dp"
-            android:text="!!!!!!"
+            android:paddingTop="8dp"
+            android:paddingBottom="12dp"
+            android:text="West Virginia"
             android:textColor="@color/white" />
 
 
@@ -44,15 +44,15 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_below="@id/tvDescription"
-            android:layout_margin="6dp"
-            android:text="Proof" />
+            android:layout_margin="8dp"
+            android:text="MINT: 219,241,000" />
 
         <ImageView
             android:id="@+id/ivCoin"
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_below="@id/tvMintage"
-            android:layout_marginBottom="-6dp"
+            android:layout_marginBottom="-2dp"
             android:layout_marginTop="2dp"
             android:src="@drawable/park6" />
 
@@ -214,21 +214,19 @@
         <Button
             android:id="@+id/bUncClose"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tlTable"
             android:layout_centerInParent="true"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="26dp"
-            android:text="Add &amp; CLOSE" />
+            android:layout_marginTop="-6dp"
+            android:text="Add 1 &amp; CLOSE" />
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:src="@drawable/oklahoma"
-            android:layout_marginTop="2dp"
-
+            android:layout_marginTop="4dp"
             android:layout_alignTop="@+id/tvDescription"
             android:layout_alignParentEnd="true"
             android:id="@+id/ivSeal" />
