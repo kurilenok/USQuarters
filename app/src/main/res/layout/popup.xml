@@ -38,7 +38,7 @@
             android:textColor="@color/white" />
 
         <TextView
-            android:layout_width="28dp"
+            android:layout_width="26dp"
             android:layout_height="80dp"
             android:background="@color/accent"
             android:text="P"
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_below="@id/tvMintage"
-            android:layout_marginBottom="-2dp"
+            android:layout_marginBottom="-4dp"
             android:layout_marginTop="2dp"
             android:src="@drawable/park6" />
 
@@ -234,15 +234,15 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tlTable"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="-6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="-8dp"
             android:text="Add 1 &amp; CLOSE" />
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:src="@drawable/oklahoma"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="6dp"
             android:layout_alignTop="@+id/tvDescription"
             android:layout_alignParentEnd="true"
             android:id="@+id/ivSeal" />

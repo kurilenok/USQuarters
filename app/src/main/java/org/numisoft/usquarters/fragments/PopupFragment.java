@@ -3,9 +3,7 @@ package org.numisoft.usquarters.fragments;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
-
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -134,7 +132,7 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
     public void onClick(View view) {
 
         CoinDao coinDao = new CoinDao(getActivity().getBaseContext());
-        AllFragment allFragment = (AllFragment) getTargetFragment();
+        BasicFragment basicFragment = (BasicFragment) getTargetFragment();
         int currentProof = coin.getProof();
         int currentUnc = coin.getUnc();
         int currentFine = coin.getFine();
@@ -184,7 +182,7 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         tvFine.setText(Integer.toString(coin.getFine()));
         tvGood.setText(Integer.toString(coin.getGood()));
         coinDao.updateCoin(coin);
-        allFragment.doSomething(coin);
+        basicFragment.doSomething(coin);
     }
 
 }

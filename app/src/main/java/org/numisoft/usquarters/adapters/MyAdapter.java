@@ -1,7 +1,6 @@
 package org.numisoft.usquarters.adapters;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -14,8 +13,10 @@ import android.widget.TextView;
 
 import org.numisoft.usquarters.R;
 import org.numisoft.usquarters.fragments.AllFragment;
-import org.numisoft.usquarters.fragments.DMintFragment;
-import org.numisoft.usquarters.fragments.SMintFragment;
+import org.numisoft.usquarters.fragments.BasicFragment;
+import org.numisoft.usquarters.fragments.NeedFragment;
+import org.numisoft.usquarters.fragments.NotUncFragment;
+import org.numisoft.usquarters.fragments.SwapFragment;
 import org.numisoft.usquarters.models.Coin;
 import org.numisoft.usquarters.models.CoinDao;
 import org.numisoft.usquarters.models.Theme;
@@ -42,16 +43,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public MyAdapter(Context context, Fragment fragment) {
         this.context = context;
         this.mOnDataClickListener = (OnDataClickListener) fragment;
+        theme = ((BasicFragment) fragment).getTheme() == null ?
+                Theme.PRESIDENTS_P : ((BasicFragment) fragment).getTheme();
 
         if (fragment instanceof AllFragment) {
-            theme = ((AllFragment) fragment).getTheme() == null ?
-                    Theme.PRESIDENTS_P : ((AllFragment) fragment).getTheme();
-            coins = new CoinDao(context).getCoinsByTheme(theme);
-
-        } else if (fragment instanceof DMintFragment) {
-            coins = new CoinDao(context).getCoinsByTheme(Theme.PARKS_D);
-        } else if (fragment instanceof SMintFragment) {
-            coins = new CoinDao(context).getCoinsByTheme(Theme.STATES_D);
+            coins = new CoinDao(context).getAllCoins(theme);
+        } else if (fragment instanceof NeedFragment) {
+            coins = new CoinDao(context).getNeedCoins(theme);
+        } else if (fragment instanceof SwapFragment) {
+            coins = new CoinDao(context).getSwapCoins(theme);
+        } else if (fragment instanceof NotUncFragment) {
+            coins = new CoinDao(context).getNotUncCoins(theme);
         }
     }
 
@@ -76,7 +78,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.tvFine.setText("F: " + Integer.toString(coins.get(position).getFine()));
         holder.tvGood.setText("G: " + Integer.toString(coins.get(position).getGood()));
 
-
         if (coins.get(position).getUnc() + coins.get(position).getProof()
                 + coins.get(position).getFine() + coins.get(position).getGood() > 0)
             holder.rlHolder.setBackground(context.getDrawable(R.drawable.background));
@@ -100,15 +101,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 mOnDataClickListener.onDataClick(coins.get(position), position);
             }
         });
-
-
     }
 
     @Override
     public int getItemCount() {
         return coins.size();
     }
-
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -133,12 +131,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-            Coin coin = coins.get(getAdapterPosition());
-
-//            FragmentManager manager = ((FragmentActivity) activity).getSupportFragmentManager();
-//            PopupFragment popup = PopupFragment.getInstance(coin);
-//            popup.show(manager, "1");
-
         }
     }
 

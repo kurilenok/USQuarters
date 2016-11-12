@@ -5,8 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import org.numisoft.usquarters.fragments.AllFragment;
-import org.numisoft.usquarters.fragments.DMintFragment;
-import org.numisoft.usquarters.fragments.SMintFragment;
+import org.numisoft.usquarters.fragments.NeedFragment;
+import org.numisoft.usquarters.fragments.NotUncFragment;
+import org.numisoft.usquarters.fragments.SwapFragment;
 import org.numisoft.usquarters.models.Theme;
 
 /**
@@ -30,15 +31,17 @@ public class PageViewAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (position == 0) {
-
-            return new AllFragment(theme);
-        }
-        else if (position == 1) {
-            return new DMintFragment();
-        }
-        else {
-            return new SMintFragment();
+        switch (position) {
+            case 0:
+                return new AllFragment(theme);
+            case 1:
+                return new NeedFragment(theme);
+            case 2:
+                return new SwapFragment(theme);
+            case 3:
+                return new NotUncFragment(theme);
+            default:
+                return new AllFragment(theme);
         }
     }
 
