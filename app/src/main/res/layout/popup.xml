@@ -236,7 +236,7 @@
             android:layout_centerInParent="true"
             android:layout_marginBottom="6dp"
             android:layout_marginTop="-8dp"
-            android:text="Add 1 &amp; CLOSE" />
+            android:text="Add &amp; CLOSE" />
 
         <ImageView
             android:layout_width="100dp"

@@ -46,6 +46,16 @@
             android:text="2013" />
 
         <TextView
+            android:id="@+id/tvMark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tvYear"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="D" />
+
+        <TextView
             android:id="@+id/tvProof"
             android:textColor="@color/accent"
             android:layout_width="wrap_content"

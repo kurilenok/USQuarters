@@ -16,47 +16,11 @@ public class CoinDao {
 
     private Context context;
 
-    private final String SELECT = "SELECT name, fullname, description, year, imageId, proof, unc, fine, good, mintage ";
+    private final String SELECT = "SELECT name, fullname, description, year, imageId, " +
+            "proof, unc, fine, good, mintage, mark ";
 
     public CoinDao(Context context) {
         this.context = context;
-    }
-
-
-    public List<Coin> getCoinsByTheme(Theme theme) {
-        DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery(
-                "SELECT name, fullname, description, year, imageId, " +
-                        "proof, unc, fine, good, mintage " +
-                        "FROM catalog " +
-                        "LEFT OUTER JOIN collection " +
-                        "ON catalog.imageId = collection.coinId " +
-                        "WHERE theme = ? ORDER BY imageId DESC", new String[]{theme.value});
-
-        List<Coin> coins = new ArrayList<>();
-        if (!cursor.moveToFirst()) return coins;
-
-        do {
-            Coin coin = new Coin();
-            coin.setName(cursor.getString(cursor.getColumnIndex("name")));
-            coin.setFullname(cursor.getString(cursor.getColumnIndex("fullname")));
-            coin.setYear(cursor.getString(cursor.getColumnIndex("year")));
-            coin.setProof(cursor.getInt(cursor.getColumnIndex("proof")));
-            coin.setUnc(cursor.getInt(cursor.getColumnIndex("unc")));
-            coin.setFine(cursor.getInt(cursor.getColumnIndex("fine")));
-            coin.setGood(cursor.getInt(cursor.getColumnIndex("good")));
-            coin.setImageId(cursor.getString(cursor.getColumnIndex("imageId")));
-            coin.setDescription(cursor.getString(cursor.getColumnIndex("description")));
-            coin.setMintage(cursor.getString(cursor.getColumnIndex("mintage")));
-            coins.add(coin);
-        } while (cursor.moveToNext());
-
-        cursor.close();
-        db.close();
-        dbHelper.close();
-
-        return coins;
     }
 
     public List<Coin> getAllCoins(Theme theme) {
@@ -131,6 +95,7 @@ public class CoinDao {
             coin.setImageId(cursor.getString(cursor.getColumnIndex("imageId")));
             coin.setDescription(cursor.getString(cursor.getColumnIndex("description")));
             coin.setMintage(cursor.getString(cursor.getColumnIndex("mintage")));
+            coin.setMark(cursor.getString(cursor.getColumnIndex("mark")));
             coins.add(coin);
         } while (cursor.moveToNext());
 

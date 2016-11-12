@@ -33,7 +33,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS catalog");
         db.execSQL("CREATE TABLE catalog (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT, fullname TEXT, mintage TEXT, " +
-                "year TEXT, imageId TEXT, " +
+                "year TEXT, imageId TEXT, mark TEXT, " +
                 "theme TEXT, description TEXT)");
 
         Gson gson = new Gson();
@@ -47,6 +47,7 @@ public class DBHelper extends SQLiteOpenHelper {
             cv.put("fullname", c.getFullname());
             cv.put("description", c.getDescription());
             cv.put("mintage", c.getMintage());
+            cv.put("mark", c.getMark());
             cv.put("year", c.getYear());
             cv.put("imageId", c.getImageId());
             cv.put("theme", c.getTheme());

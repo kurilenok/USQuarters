@@ -19,6 +19,7 @@ public class Coin implements Serializable {
     private int good;
     private String description;
     private String mintage;
+    private String mark;
 
     public Coin() {}
 
@@ -108,5 +109,13 @@ public class Coin implements Serializable {
 
     public void setMintage(String mintage) {
         this.mintage = mintage;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
     }
 }

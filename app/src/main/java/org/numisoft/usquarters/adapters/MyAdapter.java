@@ -73,6 +73,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.ivCoin.setImageResource(imageResource);
         holder.tvName.setText(coins.get(position).getName());
         holder.tvYear.setText(coins.get(position).getYear());
+        holder.tvMark.setText(coins.get(position).getMark());
         holder.tvProof.setText("Proof: " + Integer.toString(coins.get(position).getProof()));
         holder.tvUNC.setText(Integer.toString(coins.get(position).getUnc()));
         holder.tvFine.setText("F: " + Integer.toString(coins.get(position).getFine()));
@@ -113,6 +114,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         ImageView ivCoin;
         TextView tvName;
         TextView tvYear;
+        TextView tvMark;
         TextView tvUNC, tvProof, tvFine, tvGood;
         RelativeLayout rlHolder;
 
@@ -121,6 +123,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             ivCoin = (ImageView) itemView.findViewById(R.id.ivCoin);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvYear = (TextView) itemView.findViewById(R.id.tvYear);
+            tvMark = (TextView) itemView.findViewById(R.id.tvMark);
             tvProof = (TextView) itemView.findViewById(R.id.tvProof);
             tvUNC = (TextView) itemView.findViewById(R.id.tvUNC);
             tvFine = (TextView) itemView.findViewById(R.id.tvFine);
