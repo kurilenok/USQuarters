@@ -1,5 +1,6 @@
 package org.numisoft.usquarters.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -97,6 +98,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
+        if (item.getItemId() == R.id.menu_1) {
+            startActivity(new Intent(this, SettingsActivity.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -116,6 +120,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 viewPager.setAdapter(pagerAdapter);
                 getSupportActionBar().setTitle("America the Beautiful (P)");
                 break;
+            case R.id.nav_menu_4:
+                pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
+                        tabLayout.getTabCount(), Theme.PARKS_D);
+                viewPager.setAdapter(pagerAdapter);
+                getSupportActionBar().setTitle("America the Beautiful (D)");
+                break;
             case R.id.nav_menu_7:
                 pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
                         tabLayout.getTabCount(), Theme.PRESIDENTS_P);
@@ -124,9 +134,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
 
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
             drawerLayout.closeDrawer(GravityCompat.START);
-        }
+
 
         return false;
     }

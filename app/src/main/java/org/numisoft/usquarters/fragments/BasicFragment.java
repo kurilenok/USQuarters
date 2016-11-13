@@ -86,7 +86,7 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
+//        super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
             try {
                 setNewAdapter();
