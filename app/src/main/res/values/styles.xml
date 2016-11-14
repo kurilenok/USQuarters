@@ -11,4 +11,10 @@
         <item name="colorControlActivated">@color/accent</item>
     </style>
 
+    <style name="RadioGroup" parent="Base.Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:buttonTint">@color/accent</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+
 </resources>

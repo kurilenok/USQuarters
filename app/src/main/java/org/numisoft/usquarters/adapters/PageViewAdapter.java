@@ -24,8 +24,8 @@ public class PageViewAdapter extends FragmentStatePagerAdapter {
         this.numberOfTabs = numberOfTabs;
         this.theme = theme;
 
-        Fragment fragment = getItem(0);
-        fm.beginTransaction().add(fragment, "all_fragment").commit();
+//        Fragment fragment = getItem(0);
+//        fm.beginTransaction().add(fragment, "all_fragment").commit();
 
     }
 

@@ -24,76 +24,40 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <ToggleButton
-            android:id="@+id/tbMode1"
-            android:layout_width="wrap_content"
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
-            android:textOn="MODE 1"
-            android:text="ToggleButton"
-            android:textColor="@color/white"/>
+            android:layout_marginTop="56dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
 
-        <ToggleButton
-            android:id="@+id/tbMode2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/tbMode1"
-            android:textOn="MODE 2"
-            android:text="ToggleButton"
-            android:textColor="@color/white"/>
+            <RadioButton
+                android:id="@+id/radioButton1"
+                style="@style/RadioGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="Show mints separately (P || D)" />
 
-        <ToggleButton
-            android:id="@+id/tbMode3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/tbMode2"
-            android:textOn="MODE 3"
-            android:text="ToggleButton"
-            android:textColor="@color/white"
-            />
+            <RadioButton
+                android:id="@+id/radioButton2"
+                style="@style/RadioGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="Show mints together (P + D)" />
 
-        <android.support.v7.widget.SwitchCompat
-            android:id="@+id/sMode1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textOff=""
-            android:text="Show mints separately (P || D)"
-            android:background="@android:color/transparent"
-            android:textColor="@color/secondary_text"
-            android:textOn=""
-            android:button="@null"
-            android:padding="20dp"
-            android:layout_below="@id/tbMode3"/>
-
-        <android.support.v7.widget.SwitchCompat
-            android:id="@+id/sMode2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textOff=""
-            android:text="Show mints together (P + D)"
-            android:background="@android:color/transparent"
-            android:textColor="@color/secondary_text"
-            android:textOn=""
-            android:button="@null"
-            android:padding="20dp"
-            android:layout_below="@id/sMode1"/>
-
-        <android.support.v7.widget.SwitchCompat
-            android:id="@+id/sMode3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textOff=""
-            android:text="Show coins without mints"
-            android:background="@android:color/transparent"
-            android:textColor="@color/secondary_text"
-            android:textOn=""
-            android:button="@null"
-            android:padding="20dp"
-            android:layout_below="@id/sMode2"/>
+            <RadioButton
+                android:id="@+id/radioButton3"
+                style="@style/RadioGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="Don't show mints" />
+        </RadioGroup>
 
     </RelativeLayout>
 

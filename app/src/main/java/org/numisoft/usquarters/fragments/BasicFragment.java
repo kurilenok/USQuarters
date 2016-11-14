@@ -16,6 +16,7 @@ import org.numisoft.usquarters.R;
 import org.numisoft.usquarters.adapters.MyAdapter;
 import org.numisoft.usquarters.models.Coin;
 import org.numisoft.usquarters.models.Theme;
+import org.numisoft.usquarters.utils.UpdateHelper;
 
 /**
  * Created by kukolka on 22.08.16.
@@ -73,6 +74,7 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
     public void doSomething(Coin coin) {
         myAdapter.getCoins().set(clicked, coin);
         myAdapter.notifyItemChanged(clicked);
+        UpdateHelper.setNeedsUpdate(true);
     }
 
     @Override
@@ -87,13 +89,12 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
 //        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
+        if (isVisibleToUser & UpdateHelper.isNeedsUpdate()) {
             try {
                 setNewAdapter();
+                UpdateHelper.setNeedsUpdate(false);
             } catch (Exception e) {
             }
-        } else {
-            // fragment is no longer visible
         }
     }
 }

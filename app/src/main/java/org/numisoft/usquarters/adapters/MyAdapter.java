@@ -33,6 +33,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Coin> coins = new ArrayList<>();
     private Theme theme;
 
+
     public interface OnDataClickListener {
         void onDataClick(Coin coin, int position);
     }

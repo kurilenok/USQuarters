@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -81,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 // Navigation
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.addHeaderView(View.inflate(this, R.layout.nav_header, null));
+//        navigationView.addHeaderView(View.inflate(this, R.layout.nav_header, null));
 //        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
