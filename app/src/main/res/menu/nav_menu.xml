@@ -1,67 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<item android:title="My Collection">
-        <menu>
-            <item
-                android:id="@+id/nav_menu_a"
-                android:icon="@drawable/ic_work_black_24dp"
-                android:title="ALL I HAVE" />
-            <item
-                android:id="@+id/nav_menu_b"
-                android:icon="@drawable/ic_find_in_page_black_24dp"
-                android:title="ALL I NEED" />
-            <item
-                android:id="@+id/nav_menu_c"
-                android:icon="@drawable/ic_extension_black_24dp"
-                android:title="FOR SWAP" />
-            <item
-                android:id="@+id/nav_menu_d"
-                android:icon="@drawable/ic_bug_report_black_24dp"
-                android:title="LESS THAN unc" />
-        </menu>
-    </item>-->
-
-
     <item android:title="Quarters">
         <menu>
             <item
-                android:id="@+id/nav_menu_1"
+                android:id="@+id/nav_menu_states"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Statehood Quarters" />
+            <item
+                android:id="@+id/nav_menu_states_p"
                 android:icon="@drawable/ic_label_black_24dp"
                 android:title="Statehood Quarters (P)" />
             <item
-                android:id="@+id/nav_menu_2"
+                android:id="@+id/nav_menu_states_d"
                 android:icon="@drawable/ic_label_black_24dp"
                 android:title="Statehood Quarters (D)" />
             <item
-                android:id="@+id/nav_menu_3"
+                android:id="@+id/nav_menu_states_p_d"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Statehood Quarters (P+D)" />
+            <item
+                android:id="@+id/nav_menu_parks"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="America the Beautiful" />
+            <item
+                android:id="@+id/nav_menu_parks_p"
                 android:icon="@drawable/ic_label_black_24dp"
                 android:title="America the Beautiful (P)" />
             <item
-                android:id="@+id/nav_menu_4"
+                android:id="@+id/nav_menu_parks_d"
                 android:icon="@drawable/ic_label_black_24dp"
                 android:title="America the Beautiful (D)" />
+            <item
+                android:id="@+id/nav_menu_parks_p_d"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="America the Beautiful (P+D)" />
         </menu>
     </item>
 
     <item android:title="Dollars">
         <menu>
             <item
-                android:id="@+id/nav_menu_5"
+                android:id="@+id/nav_menu_sacagawea"
                 android:icon="@drawable/ic_label_black_24dp"
-                android:title="Native American Dollars (P)" />
+                android:title="Sacagawea" />
             <item
-                android:id="@+id/nav_menu_6"
+                android:id="@+id/nav_menu_sacagawea_p"
                 android:icon="@drawable/ic_label_black_24dp"
-                android:title="Native American Dollars (D)" />
+                android:title="Sacagawea (P)" />
             <item
-                android:id="@+id/nav_menu_7"
+                android:id="@+id/nav_menu_sacagawea_d"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Sacagawea (D)" />
+            <item
+                android:id="@+id/nav_menu_sacagawea_p_d"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Sacagawea (P+D)" />
+            <item
+                android:id="@+id/nav_menu_presidents"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Presidential Dollars" />
+            <item
+                android:id="@+id/nav_menu_presidents_p"
                 android:icon="@drawable/ic_label_black_24dp"
                 android:title="Presidential Dollars (P)" />
             <item
-                android:id="@+id/nav_menu_8"
+                android:id="@+id/nav_menu_presidents_d"
                 android:icon="@drawable/ic_label_black_24dp"
                 android:title="Presidential Dollars (D)" />
+            <item
+                android:id="@+id/nav_menu_presidents_p_d"
+                android:icon="@drawable/ic_label_black_24dp"
+                android:title="Presidential Dollars (P+D)" />
         </menu>
     </item>
 

@@ -56,13 +56,13 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL("DROP TABLE IF EXISTS collection");
         db.execSQL("CREATE TABLE collection (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "coinId TEXT, proof INTEGER, unc INTEGER, fine INTEGER, good INTEGER)");
+                "coinId TEXT, unc INTEGER, aunc INTEGER, fine INTEGER, good INTEGER)");
 
         for (Coin c : coins) {
             ContentValues cv2 = new ContentValues();
             cv2.put("coinId", c.getImageId());
-            cv2.put("proof", 0);
             cv2.put("unc", 0);
+            cv2.put("aunc", 0);
             cv2.put("fine", 0);
             cv2.put("good", 0);
             db.insert("collection", null, cv2);

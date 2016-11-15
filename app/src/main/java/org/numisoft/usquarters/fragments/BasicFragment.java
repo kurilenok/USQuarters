@@ -74,6 +74,7 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
     public void doSomething(Coin coin) {
         myAdapter.getCoins().set(clicked, coin);
         myAdapter.notifyItemChanged(clicked);
+        myAdapter.notifyDataSetChanged();
         UpdateHelper.setNeedsUpdate(true);
     }
 
@@ -88,8 +89,9 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser & UpdateHelper.isNeedsUpdate()) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+//        if (isVisibleToUser & UpdateHelper.isNeedsUpdate()) {
             try {
                 setNewAdapter();
                 UpdateHelper.setNeedsUpdate(false);

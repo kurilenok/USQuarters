@@ -17,7 +17,7 @@ public class CoinDao {
     private Context context;
 
     private final String SELECT = "SELECT name, fullname, description, year, imageId, " +
-            "proof, unc, fine, good, mintage, mark ";
+            "unc, aunc, fine, good, mintage, mark ";
 
     public CoinDao(Context context) {
         this.context = context;
@@ -42,7 +42,7 @@ public class CoinDao {
         query.append("LEFT OUTER JOIN collection ON catalog.imageId = collection.coinId ");
         query.append("WHERE theme = '");
         query.append(theme.value);
-        query.append("' AND (proof + unc + fine + good) = 0");
+        query.append("' AND (unc + aunc + fine + good) = 0");
         query.append(" ORDER BY imageId DESC");
 
         return getSomeCoins(query.toString());
@@ -55,7 +55,7 @@ public class CoinDao {
         query.append("LEFT OUTER JOIN collection ON catalog.imageId = collection.coinId ");
         query.append("WHERE theme = '");
         query.append(theme.value);
-        query.append("' AND (proof + unc + fine + good) > 1");
+        query.append("' AND (unc + aunc + fine + good) > 1");
         query.append(" ORDER BY imageId DESC");
 
         return getSomeCoins(query.toString());
@@ -68,8 +68,8 @@ public class CoinDao {
         query.append("LEFT OUTER JOIN collection ON catalog.imageId = collection.coinId ");
         query.append("WHERE theme = '");
         query.append(theme.value);
-        query.append("' AND (fine + good) > 0");
-        query.append(" AND (proof + unc) = 0");
+        query.append("' AND (aunc + fine + good) > 0");
+        query.append(" AND unc = 0");
         query.append(" ORDER BY imageId DESC");
 
         return getSomeCoins(query.toString());
@@ -88,8 +88,8 @@ public class CoinDao {
             coin.setName(cursor.getString(cursor.getColumnIndex("name")));
             coin.setFullname(cursor.getString(cursor.getColumnIndex("fullname")));
             coin.setYear(cursor.getString(cursor.getColumnIndex("year")));
-            coin.setProof(cursor.getInt(cursor.getColumnIndex("proof")));
             coin.setUnc(cursor.getInt(cursor.getColumnIndex("unc")));
+            coin.setAUnc(cursor.getInt(cursor.getColumnIndex("aunc")));
             coin.setFine(cursor.getInt(cursor.getColumnIndex("fine")));
             coin.setGood(cursor.getInt(cursor.getColumnIndex("good")));
             coin.setImageId(cursor.getString(cursor.getColumnIndex("imageId")));
@@ -110,8 +110,8 @@ public class CoinDao {
         DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         db.execSQL(
-                "UPDATE collection SET proof = ?, unc = ?, fine = ?, good = ? WHERE coinId = ?",
-                new Object[]{coin.getProof(), coin.getUnc(), coin.getFine(), coin.getGood(),
+                "UPDATE collection SET unc = ?, aunc = ?, fine = ?, good = ? WHERE coinId = ?",
+                new Object[]{coin.getUnc(), coin.getAUnc(), coin.getFine(), coin.getGood(),
                         coin.getImageId()});
         db.close();
         dbHelper.close();

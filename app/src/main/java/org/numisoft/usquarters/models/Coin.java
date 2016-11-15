@@ -13,8 +13,8 @@ public class Coin implements Serializable {
     private String year;
     private String theme;
     private String imageId;
-    private int proof;
     private int unc;
+    private int aUnc;
     private int fine;
     private int good;
     private String description;
@@ -63,12 +63,12 @@ public class Coin implements Serializable {
         this.unc = unc;
     }
 
-    public int getProof() {
-        return proof;
+    public int getAUnc() {
+        return aUnc;
     }
 
-    public void setProof(int proof) {
-        this.proof = proof;
+    public void setAUnc(int aUnc) {
+        this.aUnc = aUnc;
     }
 
     public int getFine() {

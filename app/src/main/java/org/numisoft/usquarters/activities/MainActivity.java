@@ -1,7 +1,9 @@
 package org.numisoft.usquarters.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.internal.NavigationMenuItemView;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -18,8 +20,10 @@ import android.view.View;
 import org.numisoft.usquarters.R;
 import org.numisoft.usquarters.adapters.PageViewAdapter;
 import org.numisoft.usquarters.models.Theme;
+import org.numisoft.usquarters.utils.Constants;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, Constants {
 
     ActionBarDrawerToggle drawerToggle;
     DrawerLayout drawerLayout;
@@ -60,15 +64,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-
+//                viewPager.setCurrentItem(tab.getPosition());
             }
         });
 
@@ -84,6 +85,63 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
+// Navigation menu transformation
+        Menu navigationViewMenu = navigationView.getMenu();
+        SharedPreferences preferences = getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
+        int viewMode = preferences.getInt(VIEW_MODE, 1);
+        switch (viewMode) {
+            case 0:
+                hideMenuItemsMode0(navigationViewMenu);
+                break;
+            case 1:
+                hideMenuItemsMode1(navigationViewMenu);
+                break;
+            case 2:
+                hideMenuItemsMode2(navigationViewMenu);
+                break;
+        }
+
+    }
+
+    private void hideMenuItemsMode0(Menu navigationViewMenu) {
+        navigationViewMenu.findItem(R.id.nav_menu_states_p).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_states_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_states_p_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_parks_p).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_parks_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_parks_p_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_sacagawea_p).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_sacagawea_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_sacagawea_p_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_presidents_p).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_presidents_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_presidents_p_d).setVisible(false);
+    }
+
+    private void hideMenuItemsMode1(Menu navigationViewMenu) {
+        navigationViewMenu.findItem(R.id.nav_menu_states).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_states_p_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_parks).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_parks_p_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_sacagawea).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_sacagawea_p_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_presidents).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_presidents_p_d).setVisible(false);
+    }
+
+    private void hideMenuItemsMode2(Menu navigationViewMenu) {
+        navigationViewMenu.findItem(R.id.nav_menu_states).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_states_p).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_states_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_parks).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_parks_p).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_parks_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_sacagawea).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_sacagawea_p).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_sacagawea_d).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_presidents).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_presidents_p).setVisible(false);
+        navigationViewMenu.findItem(R.id.nav_menu_presidents_d).setVisible(false);
     }
 
     @Override
@@ -105,40 +163,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
-            case R.id.nav_menu_1:
+            case R.id.nav_menu_states_p:
                 pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
                         tabLayout.getTabCount(), Theme.STATES_P);
                 viewPager.setAdapter(pagerAdapter);
                 getSupportActionBar().setTitle("Statehood Quarters (P)");
                 break;
-            case R.id.nav_menu_3:
+            case R.id.nav_menu_parks_p:
                 pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
                         tabLayout.getTabCount(), Theme.PARKS_P);
                 viewPager.setAdapter(pagerAdapter);
                 getSupportActionBar().setTitle("America the Beautiful (P)");
                 break;
-            case R.id.nav_menu_4:
+            case R.id.nav_menu_parks_d:
                 pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
                         tabLayout.getTabCount(), Theme.PARKS_D);
                 viewPager.setAdapter(pagerAdapter);
                 getSupportActionBar().setTitle("America the Beautiful (D)");
                 break;
-            case R.id.nav_menu_7:
+            case R.id.nav_menu_presidents_p:
                 pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
                         tabLayout.getTabCount(), Theme.PRESIDENTS_P);
                 viewPager.setAdapter(pagerAdapter);
                 getSupportActionBar().setTitle("Presidential Dollars (P)");
                 break;
         }
-
         if (drawerLayout.isDrawerOpen(GravityCompat.START))
             drawerLayout.closeDrawer(GravityCompat.START);
-
-
         return false;
     }
-
-
 }

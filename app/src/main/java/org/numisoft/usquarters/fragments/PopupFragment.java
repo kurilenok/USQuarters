@@ -24,8 +24,8 @@ import org.numisoft.usquarters.models.CoinDao;
 public class PopupFragment extends DialogFragment implements View.OnClickListener {
 
     private Coin coin;
-    TextView tvUNC, tvProof, tvFine, tvGood;
-    Button bDeleteProof, bDeleteUnc, bDeleteFine, bDeleteGood;
+    TextView tvUnc, tvAUnc, tvFine, tvGood;
+    Button bDeleteUnc, bDeleteAUnc, bDeleteFine, bDeleteGood;
 
     private static PopupFragment instance = null;
 
@@ -58,23 +58,24 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         TextView tvName = (TextView) view.findViewById(R.id.tvName);
         TextView tvDescription = (TextView) view.findViewById(R.id.tvDescription);
         TextView tvMintage = (TextView) view.findViewById(R.id.tvMintage);
+        TextView tvMark = (TextView) view.findViewById(R.id.tvMark);
         ImageView ivCoin = (ImageView) view.findViewById(R.id.ivCoin);
         ImageView ivSeal = (ImageView) view.findViewById(R.id.ivSeal);
 
 
-        tvUNC = (TextView) view.findViewById(R.id.tvUNC);
-        tvProof = (TextView) view.findViewById(R.id.tvProof);
+        tvUnc = (TextView) view.findViewById(R.id.tvUnc);
+        tvAUnc = (TextView) view.findViewById(R.id.tvAUnc);
         tvFine = (TextView) view.findViewById(R.id.tvFine);
         tvGood = (TextView) view.findViewById(R.id.tvGood);
 
-        Button bAddProof = (Button) view.findViewById(R.id.bAddProof);
         Button bAddUnc = (Button) view.findViewById(R.id.bAddUnc);
+        Button bAddAUnc = (Button) view.findViewById(R.id.bAddAUnc);
         Button bAddFine = (Button) view.findViewById(R.id.bAddFine);
         Button bAddGood = (Button) view.findViewById(R.id.bAddGood);
 
 
-        bDeleteProof = (Button) view.findViewById(R.id.bDeleteProof);
         bDeleteUnc = (Button) view.findViewById(R.id.bDeleteUnc);
+        bDeleteAUnc = (Button) view.findViewById(R.id.bDeleteAUnc);
         bDeleteFine = (Button) view.findViewById(R.id.bDeleteFine);
         bDeleteGood = (Button) view.findViewById(R.id.bDeleteGood);
 
@@ -83,9 +84,11 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
 
         tvName.setText(coin.getFullname());
         tvDescription.setText(coin.getDescription());
-        tvMintage.setText("MINT: " + coin.getMintage() + " ");
+        tvMintage.setText("MINTAGE: " + coin.getMintage() + " ");
+        tvMark.setText(coin.getMark());
 
-        ivCoin.setImageResource(getResources().getIdentifier(coin.getImageId(), "drawable", getContext().getPackageName()));
+        ivCoin.setImageResource(getResources().getIdentifier(coin.getImageId(),
+                "drawable", getContext().getPackageName()));
 
         ivSeal.setImageResource(0);
         if (coin.getDescription().equalsIgnoreCase("nebraska"))
@@ -104,12 +107,12 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
             ivSeal.setImageResource(R.drawable.illinois);
 
 
-        tvProof.setText(Integer.toString(coin.getProof()));
-        bAddProof.setOnClickListener(this);
-        bDeleteProof.setOnClickListener(this);
-        if (coin.getProof() == 0) bDeleteProof.setEnabled(false);
+        tvAUnc.setText(Integer.toString(coin.getAUnc()));
+        bAddAUnc.setOnClickListener(this);
+        bDeleteAUnc.setOnClickListener(this);
+        if (coin.getAUnc() == 0) bDeleteAUnc.setEnabled(false);
 
-        tvUNC.setText(Integer.toString(coin.getUnc()));
+        tvUnc.setText(Integer.toString(coin.getUnc()));
         bAddUnc.setOnClickListener(this);
         bDeleteUnc.setOnClickListener(this);
         if (coin.getUnc() == 0) bDeleteUnc.setEnabled(false);
@@ -133,8 +136,8 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
 
         CoinDao coinDao = new CoinDao(getActivity().getBaseContext());
         BasicFragment basicFragment = (BasicFragment) getTargetFragment();
-        int currentProof = coin.getProof();
         int currentUnc = coin.getUnc();
+        int currentAUnc = coin.getAUnc();
         int currentFine = coin.getFine();
         int currentGood = coin.getGood();
 
@@ -143,14 +146,6 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
                 coin.setUnc(++currentUnc);
                 this.dismiss();
                 break;
-            case R.id.bAddProof:
-                coin.setProof(++currentProof);
-                bDeleteProof.setEnabled(true);
-                break;
-            case R.id.bDeleteProof:
-                coin.setProof(--currentProof);
-                if (coin.getProof() == 0) bDeleteProof.setEnabled(false);
-                break;
             case R.id.bAddUnc:
                 coin.setUnc(++currentUnc);
                 bDeleteUnc.setEnabled(true);
@@ -158,6 +153,14 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
             case R.id.bDeleteUnc:
                 coin.setUnc(--currentUnc);
                 if (coin.getUnc() == 0) bDeleteUnc.setEnabled(false);
+                break;
+            case R.id.bAddAUnc:
+                coin.setAUnc(++currentAUnc);
+                bDeleteAUnc.setEnabled(true);
+                break;
+            case R.id.bDeleteAUnc:
+                coin.setAUnc(--currentAUnc);
+                if (coin.getAUnc() == 0) bDeleteAUnc.setEnabled(false);
                 break;
             case R.id.bAddFine:
                 coin.setFine(++currentFine);
@@ -177,8 +180,8 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
                 break;
         }
 
-        tvUNC.setText(Integer.toString(coin.getUnc()));
-        tvProof.setText(Integer.toString(coin.getProof()));
+        tvUnc.setText(Integer.toString(coin.getUnc()));
+        tvAUnc.setText(Integer.toString(coin.getAUnc()));
         tvFine.setText(Integer.toString(coin.getFine()));
         tvGood.setText(Integer.toString(coin.getGood()));
         coinDao.updateCoin(coin);
