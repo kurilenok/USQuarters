@@ -73,7 +73,7 @@
             android:layout_below="@id/tvMintage"
             android:layout_marginBottom="-4dp"
             android:layout_marginTop="2dp"
-            android:src="@drawable/park6" />
+            android:src="@drawable/dollar1" />
 
         <TableLayout
             android:id="@+id/tlTable"

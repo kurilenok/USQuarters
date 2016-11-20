@@ -17,7 +17,7 @@ public class CoinDao {
     private Context context;
 
     private final String SELECT = "SELECT name, fullname, description, year, imageId, " +
-            "unc, aunc, fine, good, mintage, mark ";
+            "catalog.coinId, unc, aunc, fine, good, mintage, mark ";
 
     public CoinDao(Context context) {
         this.context = context;
@@ -27,7 +27,7 @@ public class CoinDao {
         StringBuilder query = new StringBuilder();
         query.append(SELECT);
         query.append("FROM catalog ");
-        query.append("LEFT OUTER JOIN collection ON catalog.imageId = collection.coinId ");
+        query.append("LEFT OUTER JOIN collection ON catalog.coinId = collection.coinId ");
         query.append("WHERE theme = '");
         query.append(theme.value);
         query.append("' ORDER BY imageId DESC");
@@ -39,7 +39,7 @@ public class CoinDao {
         StringBuilder query = new StringBuilder();
         query.append(SELECT);
         query.append("FROM catalog ");
-        query.append("LEFT OUTER JOIN collection ON catalog.imageId = collection.coinId ");
+        query.append("LEFT OUTER JOIN collection ON catalog.coinId = collection.coinId ");
         query.append("WHERE theme = '");
         query.append(theme.value);
         query.append("' AND (unc + aunc + fine + good) = 0");
@@ -52,7 +52,7 @@ public class CoinDao {
         StringBuilder query = new StringBuilder();
         query.append(SELECT);
         query.append("FROM catalog ");
-        query.append("LEFT OUTER JOIN collection ON catalog.imageId = collection.coinId ");
+        query.append("LEFT OUTER JOIN collection ON catalog.coinId = collection.coinId ");
         query.append("WHERE theme = '");
         query.append(theme.value);
         query.append("' AND (unc + aunc + fine + good) > 1");
@@ -65,7 +65,7 @@ public class CoinDao {
         StringBuilder query = new StringBuilder();
         query.append(SELECT);
         query.append("FROM catalog ");
-        query.append("LEFT OUTER JOIN collection ON catalog.imageId = collection.coinId ");
+        query.append("LEFT OUTER JOIN collection ON catalog.coinId = collection.coinId ");
         query.append("WHERE theme = '");
         query.append(theme.value);
         query.append("' AND (aunc + fine + good) > 0");
@@ -93,6 +93,7 @@ public class CoinDao {
             coin.setFine(cursor.getInt(cursor.getColumnIndex("fine")));
             coin.setGood(cursor.getInt(cursor.getColumnIndex("good")));
             coin.setImageId(cursor.getString(cursor.getColumnIndex("imageId")));
+            coin.setCoinId(cursor.getString(cursor.getColumnIndex("coinId")));
             coin.setDescription(cursor.getString(cursor.getColumnIndex("description")));
             coin.setMintage(cursor.getString(cursor.getColumnIndex("mintage")));
             coin.setMark(cursor.getString(cursor.getColumnIndex("mark")));
@@ -112,7 +113,7 @@ public class CoinDao {
         db.execSQL(
                 "UPDATE collection SET unc = ?, aunc = ?, fine = ?, good = ? WHERE coinId = ?",
                 new Object[]{coin.getUnc(), coin.getAUnc(), coin.getFine(), coin.getGood(),
-                        coin.getImageId()});
+                        coin.getCoinId()});
         db.close();
         dbHelper.close();
     }

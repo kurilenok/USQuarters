@@ -13,6 +13,7 @@ public class Coin implements Serializable {
     private String year;
     private String theme;
     private String imageId;
+    private String coinId;
     private int unc;
     private int aUnc;
     private int fine;
@@ -117,5 +118,13 @@ public class Coin implements Serializable {
 
     public void setMark(String mark) {
         this.mark = mark;
+    }
+
+    public String getCoinId() {
+        return coinId;
+    }
+
+    public void setCoinId(String coinId) {
+        this.coinId = coinId;
     }
 }
