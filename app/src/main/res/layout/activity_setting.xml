@@ -65,6 +65,26 @@
                 android:text="I don't care about mints" />
         </RadioGroup>
 
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:src="@drawable/dollar3"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dollar1"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/dollar2"
+            android:layout_centerInParent="true"/>
+
+
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
