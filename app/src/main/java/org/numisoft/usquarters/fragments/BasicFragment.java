@@ -1,5 +1,6 @@
 package org.numisoft.usquarters.fragments;
 
+import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -28,6 +29,7 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
     RecyclerView rvMain;
     MyAdapter myAdapter;
     int clicked;
+    RecyclerView.LayoutManager layoutManager;
 
     public BasicFragment() {
     }
@@ -45,9 +47,7 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
 
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-
-        RecyclerView.LayoutManager layoutManager =
-                new GridLayoutManager(view.getContext(), (int) (dpWidth / 160));
+        layoutManager = new GridLayoutManager(view.getContext(), (int) (dpWidth / 160));
 
         rvMain = (RecyclerView) view.findViewById(R.id.rvMain);
         rvMain.setLayoutManager(layoutManager);
@@ -91,12 +91,24 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-//        if (isVisibleToUser & UpdateHelper.isNeedsUpdate()) {
-            try {
-                setNewAdapter();
-                UpdateHelper.setNeedsUpdate(false);
-            } catch (Exception e) {
+//            if (isVisibleToUser & UpdateHelper.isNeedsUpdate()) {
+                try {
+                    setNewAdapter();
+                    UpdateHelper.setNeedsUpdate(false);
+                } catch (Exception e) {
+                }
             }
-        }
+//        }
+    }
+
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+        layoutManager = new GridLayoutManager(view.getContext(), (int) (dpWidth / 160));
+
+        rvMain.setLayoutManager(layoutManager);
     }
 }

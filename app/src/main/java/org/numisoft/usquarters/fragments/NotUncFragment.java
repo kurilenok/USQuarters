@@ -11,4 +11,8 @@ public class NotUncFragment extends BasicFragment {
     public NotUncFragment(Theme theme) {
         super(theme);
     }
+
+    public NotUncFragment() {
+        super();
+    }
 }

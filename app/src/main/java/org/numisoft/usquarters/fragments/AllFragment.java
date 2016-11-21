@@ -10,4 +10,8 @@ public class AllFragment extends BasicFragment {
     public AllFragment(Theme theme) {
         super(theme);
     }
+
+    public AllFragment() {
+        super();
+    }
 }

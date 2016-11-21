@@ -12,8 +12,7 @@ public class NeedFragment extends BasicFragment{
         super(theme);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    public NeedFragment() {
+        super();
     }
 }

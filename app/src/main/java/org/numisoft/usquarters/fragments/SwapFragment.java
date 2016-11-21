@@ -11,4 +11,8 @@ public class SwapFragment extends BasicFragment {
     public SwapFragment(Theme theme) {
         super(theme);
     }
+
+    public SwapFragment() {
+        super();
+    }
 }
