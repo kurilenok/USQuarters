@@ -1,7 +1,6 @@
 package org.numisoft.usquarters.fragments;
 
 import android.content.res.Configuration;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,7 +23,8 @@ import org.numisoft.usquarters.utils.UpdateHelper;
  */
 public class BasicFragment extends Fragment implements MyAdapter.OnDataClickListener {
 
-    Theme theme;
+    Theme theme1;
+    Theme theme2;
     View view;
     RecyclerView rvMain;
     MyAdapter myAdapter;
@@ -34,8 +34,9 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
     public BasicFragment() {
     }
 
-    public BasicFragment(Theme theme) {
-        this.theme = theme;
+    public BasicFragment(Theme theme1, Theme theme2) {
+        this.theme1 = theme1;
+        this.theme2 = theme2;
     }
 
 
@@ -44,6 +45,7 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.all_fragment, container, false);
+        setRetainInstance(true);
 
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
@@ -60,14 +62,6 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
     private void setNewAdapter() {
         myAdapter = new MyAdapter(view.getContext(), this);
         rvMain.setAdapter(myAdapter);
-    }
-
-    public Theme getTheme() {
-        return theme;
-    }
-
-    public void setTheme(Theme theme) {
-        this.theme = theme;
     }
 
 
@@ -92,12 +86,12 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
 //            if (isVisibleToUser & UpdateHelper.isNeedsUpdate()) {
-                try {
-                    setNewAdapter();
-                    UpdateHelper.setNeedsUpdate(false);
-                } catch (Exception e) {
-                }
+            try {
+                setNewAdapter();
+                UpdateHelper.setNeedsUpdate(false);
+            } catch (Exception e) {
             }
+        }
 //        }
     }
 
@@ -110,5 +104,21 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
         layoutManager = new GridLayoutManager(view.getContext(), (int) (dpWidth / 160));
 
         rvMain.setLayoutManager(layoutManager);
+    }
+
+    public Theme getTheme1() {
+        return theme1;
+    }
+
+    public void setTheme1(Theme theme1) {
+        this.theme1 = theme1;
+    }
+
+    public Theme getTheme2() {
+        return theme2;
+    }
+
+    public void setTheme2(Theme theme2) {
+        this.theme2 = theme2;
     }
 }

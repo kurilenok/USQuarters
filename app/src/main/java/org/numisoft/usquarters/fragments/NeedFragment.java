@@ -8,8 +8,8 @@ import org.numisoft.usquarters.models.Theme;
 
 public class NeedFragment extends BasicFragment{
 
-    public NeedFragment(Theme theme) {
-        super(theme);
+    public NeedFragment(Theme theme1, Theme theme2) {
+        super(theme1, theme2);
     }
 
     public NeedFragment() {

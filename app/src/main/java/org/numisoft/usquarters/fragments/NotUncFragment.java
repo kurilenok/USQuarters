@@ -8,8 +8,8 @@ import org.numisoft.usquarters.models.Theme;
 
 public class NotUncFragment extends BasicFragment {
 
-    public NotUncFragment(Theme theme) {
-        super(theme);
+    public NotUncFragment(Theme theme1, Theme theme2) {
+        super(theme1, theme2);
     }
 
     public NotUncFragment() {

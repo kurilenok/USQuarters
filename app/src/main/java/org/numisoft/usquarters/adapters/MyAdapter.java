@@ -31,7 +31,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private Context context;
     private List<Coin> coins = new ArrayList<>();
-    private Theme theme;
+    private Theme theme1;
+    private Theme theme2;
 
     public interface OnDataClickListener {
         void onDataClick(Coin coin, int position);
@@ -43,17 +44,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public MyAdapter(Context context, Fragment fragment) {
         this.context = context;
         this.mOnDataClickListener = (OnDataClickListener) fragment;
-        theme = ((BasicFragment) fragment).getTheme() == null ?
-                Theme.PRESIDENTS_P : ((BasicFragment) fragment).getTheme();
+        theme1 = ((BasicFragment) fragment).getTheme1() == null ?
+                Theme.PRESIDENTS_P : ((BasicFragment) fragment).getTheme1();
+        theme2 = ((BasicFragment) fragment).getTheme2() == null ?
+                Theme.PRESIDENTS_P : ((BasicFragment) fragment).getTheme2();
 
         if (fragment instanceof AllFragment) {
-            coins = new CoinDao(context).getAllCoins(theme);
+            coins = new CoinDao(context).getAllCoins(theme1, theme2);
         } else if (fragment instanceof NeedFragment) {
-            coins = new CoinDao(context).getNeedCoins(theme);
+            coins = new CoinDao(context).getNeedCoins(theme1, theme2);
         } else if (fragment instanceof SwapFragment) {
-            coins = new CoinDao(context).getSwapCoins(theme);
+            coins = new CoinDao(context).getSwapCoins(theme1, theme2);
         } else if (fragment instanceof NotUncFragment) {
-            coins = new CoinDao(context).getNotUncCoins(theme);
+            coins = new CoinDao(context).getNotUncCoins(theme1, theme2);
         }
     }
 

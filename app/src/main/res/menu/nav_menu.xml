@@ -18,7 +18,7 @@
             <item
                 android:id="@+id/nav_menu_states_p_d"
                 android:icon="@drawable/ic_label_black_24dp"
-                android:title="Statehood Quarters (P+D)" />
+                android:title="Statehood Quarters" />
             <item
                 android:id="@+id/nav_menu_parks"
                 android:icon="@drawable/ic_label_black_24dp"
@@ -34,7 +34,7 @@
             <item
                 android:id="@+id/nav_menu_parks_p_d"
                 android:icon="@drawable/ic_label_black_24dp"
-                android:title="America the Beautiful (P+D)" />
+                android:title="America the Beautiful" />
         </menu>
     </item>
 
@@ -55,7 +55,7 @@
             <item
                 android:id="@+id/nav_menu_sacagawea_p_d"
                 android:icon="@drawable/ic_label_black_24dp"
-                android:title="Sacagawea (P+D)" />
+                android:title="Sacagawea" />
             <item
                 android:id="@+id/nav_menu_presidents"
                 android:icon="@drawable/ic_label_black_24dp"
@@ -71,7 +71,7 @@
             <item
                 android:id="@+id/nav_menu_presidents_p_d"
                 android:icon="@drawable/ic_label_black_24dp"
-                android:title="Presidential Dollars (P+D)" />
+                android:title="Presidential Dollars" />
         </menu>
     </item>
 

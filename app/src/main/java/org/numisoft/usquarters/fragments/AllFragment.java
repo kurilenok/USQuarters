@@ -7,8 +7,8 @@ import org.numisoft.usquarters.models.Theme;
  */
 public class AllFragment extends BasicFragment {
 
-    public AllFragment(Theme theme) {
-        super(theme);
+    public AllFragment(Theme theme1, Theme theme2) {
+        super(theme1, theme2);
     }
 
     public AllFragment() {

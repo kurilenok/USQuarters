@@ -8,8 +8,8 @@ import org.numisoft.usquarters.models.Theme;
 
 public class SwapFragment extends BasicFragment {
 
-    public SwapFragment(Theme theme) {
-        super(theme);
+    public SwapFragment(Theme theme1, Theme theme2) {
+        super(theme1, theme2);
     }
 
     public SwapFragment() {
