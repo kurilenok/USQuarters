@@ -10,7 +10,7 @@ public class Coin implements Serializable {
 
     private String name;
     private String fullname;
-    private String year;
+    private int year;
     private String theme;
     private String imageId;
     private String coinId;
@@ -40,11 +40,11 @@ public class Coin implements Serializable {
         this.name = name;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 

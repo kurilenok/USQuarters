@@ -9,6 +9,7 @@
     cardview:cardPreventCornerOverlap="false">
 
     <RelativeLayout
+        android:id="@+id/rlItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -240,15 +241,6 @@
             android:layout_marginBottom="6dp"
             android:layout_marginTop="-8dp"
             android:text="Add &amp; CLOSE" />
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:src="@drawable/oklahoma"
-            android:layout_marginTop="6dp"
-            android:layout_alignTop="@+id/tvDescription"
-            android:layout_alignParentEnd="true"
-            android:id="@+id/ivSeal" />
 
     </RelativeLayout>
 

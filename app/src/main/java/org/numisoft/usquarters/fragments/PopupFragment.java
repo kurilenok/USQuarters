@@ -1,6 +1,7 @@
 package org.numisoft.usquarters.fragments;
 
 
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,11 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.numisoft.usquarters.R;
 import org.numisoft.usquarters.models.Coin;
 import org.numisoft.usquarters.models.CoinDao;
+
+import static android.content.Context.MODE_PRIVATE;
+import static org.numisoft.usquarters.utils.Constants.SHARED_PREF;
+import static org.numisoft.usquarters.utils.Constants.VIEW_MODE;
 
 /**
  * Created by kukolka on 10/31/2016.
@@ -26,6 +32,8 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
     private Coin coin;
     TextView tvUnc, tvAUnc, tvFine, tvGood;
     Button bDeleteUnc, bDeleteAUnc, bDeleteFine, bDeleteGood;
+    SharedPreferences preferences;
+
 
     private static PopupFragment instance = null;
 
@@ -60,8 +68,6 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         TextView tvMintage = (TextView) view.findViewById(R.id.tvMintage);
         TextView tvMark = (TextView) view.findViewById(R.id.tvMark);
         ImageView ivCoin = (ImageView) view.findViewById(R.id.ivCoin);
-        ImageView ivSeal = (ImageView) view.findViewById(R.id.ivSeal);
-
 
         tvUnc = (TextView) view.findViewById(R.id.tvUnc);
         tvAUnc = (TextView) view.findViewById(R.id.tvAUnc);
@@ -72,7 +78,6 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         Button bAddAUnc = (Button) view.findViewById(R.id.bAddAUnc);
         Button bAddFine = (Button) view.findViewById(R.id.bAddFine);
         Button bAddGood = (Button) view.findViewById(R.id.bAddGood);
-
 
         bDeleteUnc = (Button) view.findViewById(R.id.bDeleteUnc);
         bDeleteAUnc = (Button) view.findViewById(R.id.bDeleteAUnc);
@@ -85,27 +90,17 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         tvName.setText(coin.getFullname());
         tvDescription.setText(coin.getDescription());
         tvMintage.setText("MINTAGE: " + coin.getMintage() + " ");
-        tvMark.setText(coin.getMark());
+
+        preferences = getActivity().getSharedPreferences(SHARED_PREF, MODE_PRIVATE);
+        if (preferences.getInt(VIEW_MODE, 1) == 0) {
+            RelativeLayout rlItem = (RelativeLayout) view.findViewById(R.id.rlItem);
+            rlItem.removeView(tvMark);
+        } else {
+            tvMark.setText(coin.getMark());
+        }
 
         ivCoin.setImageResource(getResources().getIdentifier(coin.getImageId(),
                 "drawable", getContext().getPackageName()));
-
-        ivSeal.setImageResource(0);
-        if (coin.getDescription().equalsIgnoreCase("nebraska"))
-            ivSeal.setImageResource(R.drawable.nebraska);
-        if (coin.getName().equalsIgnoreCase("arizona"))
-            ivSeal.setImageResource(R.drawable.arizona);
-        if (coin.getName().equalsIgnoreCase("oklahoma"))
-            ivSeal.setImageResource(R.drawable.oklahoma);
-        if (coin.getDescription().equalsIgnoreCase("florida"))
-            ivSeal.setImageResource(R.drawable.florida);
-        if (coin.getDescription().equalsIgnoreCase("west virginia"))
-            ivSeal.setImageResource(R.drawable.wvirginia);
-        if (coin.getDescription().equalsIgnoreCase("pennsylvania"))
-            ivSeal.setImageResource(R.drawable.pennsylvania);
-        if (coin.getDescription().equalsIgnoreCase("illinois"))
-            ivSeal.setImageResource(R.drawable.illinois);
-
 
         tvAUnc.setText(Integer.toString(coin.getAUnc()));
         bAddAUnc.setOnClickListener(this);
@@ -126,7 +121,6 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         bAddGood.setOnClickListener(this);
         bDeleteGood.setOnClickListener(this);
         if (coin.getGood() == 0) bDeleteGood.setEnabled(false);
-
 
         return view;
     }
@@ -184,6 +178,7 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         tvAUnc.setText(Integer.toString(coin.getAUnc()));
         tvFine.setText(Integer.toString(coin.getFine()));
         tvGood.setText(Integer.toString(coin.getGood()));
+
         coinDao.updateCoin(coin);
         basicFragment.doSomething(coin);
     }

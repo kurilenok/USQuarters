@@ -75,7 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         holder.ivCoin.setImageResource(imageResource);
         holder.tvName.setText(coins.get(position).getName());
-        holder.tvYear.setText(coins.get(position).getYear());
+        holder.tvYear.setText(Integer.toString(coins.get(position).getYear()));
         holder.tvMark.setText(coins.get(position).getMark());
         holder.tvUnc.setText(Integer.toString(coins.get(position).getUnc()));
         holder.tvAUnc.setText("AU: " + Integer.toString(coins.get(position).getAUnc()));

@@ -24,7 +24,6 @@ public class PageViewAdapter extends FragmentStatePagerAdapter {
         this.numberOfTabs = numberOfTabs;
         this.theme1 = theme1;
         this.theme2 = theme2;
-
     }
 
     @Override

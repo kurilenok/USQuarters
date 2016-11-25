@@ -44,7 +44,7 @@ public class CoinDao {
         query.append(theme1.value);
         query.append("' OR theme ='");
         query.append(theme2.value);
-        query.append("') ORDER BY imageId DESC");
+        query.append("') ORDER BY catalog.coinId DESC");
 
         return getSomeCoins(query.toString());
     }
@@ -72,7 +72,7 @@ public class CoinDao {
         query.append("' OR theme ='");
         query.append(theme2.value);
         query.append("') AND (unc + aunc + fine + good) = 0");
-        query.append(" ORDER BY imageId DESC");
+        query.append(" ORDER BY catalog.coinId DESC");
 
         return getSomeCoins(query.toString());
     }
@@ -100,7 +100,7 @@ public class CoinDao {
         query.append("' OR theme ='");
         query.append(theme2.value);
         query.append("') AND (unc + aunc + fine + good) > 1");
-        query.append(" ORDER BY imageId DESC");
+        query.append(" ORDER BY catalog.coinId DESC");
 
         return getSomeCoins(query.toString());
     }
@@ -130,13 +130,13 @@ public class CoinDao {
         query.append(theme2.value);
         query.append("') AND (aunc + fine + good) > 0");
         query.append(" AND unc = 0");
-        query.append(" ORDER BY imageId DESC");
+        query.append(" ORDER BY catalog.coinId DESC");
 
         return getSomeCoins(query.toString());
     }
 
     public List<Coin> getSomeCoins(String query) {
-        DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
+        DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, new String[]{});
 
@@ -147,7 +147,7 @@ public class CoinDao {
             Coin coin = new Coin();
             coin.setName(cursor.getString(cursor.getColumnIndex("name")));
             coin.setFullname(cursor.getString(cursor.getColumnIndex("fullname")));
-            coin.setYear(cursor.getString(cursor.getColumnIndex("year")));
+            coin.setYear(cursor.getInt(cursor.getColumnIndex("year")));
             coin.setUnc(cursor.getInt(cursor.getColumnIndex("unc")));
             coin.setAUnc(cursor.getInt(cursor.getColumnIndex("aunc")));
             coin.setFine(cursor.getInt(cursor.getColumnIndex("fine")));
@@ -168,7 +168,7 @@ public class CoinDao {
     }
 
     public void updateCoin(Coin coin) {
-        DBHelper dbHelper = new DBHelper(context, "coins", null, 1);
+        DBHelper dbHelper = new DBHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         db.execSQL(
                 "UPDATE collection SET unc = ?, aunc = ?, fine = ?, good = ? WHERE coinId = ?",

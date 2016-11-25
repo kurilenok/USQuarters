@@ -39,7 +39,6 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
         this.theme2 = theme2;
     }
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,7 +62,6 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
         myAdapter = new MyAdapter(view.getContext(), this);
         rvMain.setAdapter(myAdapter);
     }
-
 
     public void doSomething(Coin coin) {
         myAdapter.getCoins().set(clicked, coin);
@@ -94,7 +92,6 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
         }
 //        }
     }
-
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
