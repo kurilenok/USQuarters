@@ -99,7 +99,6 @@ public class BasicFragment extends Fragment implements MyAdapter.OnDataClickList
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
         layoutManager = new GridLayoutManager(view.getContext(), (int) (dpWidth / 160));
-
         rvMain.setLayoutManager(layoutManager);
     }
 

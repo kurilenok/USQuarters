@@ -23,18 +23,6 @@ public class CoinDao {
         this.context = context;
     }
 
-//    public List<Coin> getAllCoins(Theme theme) {
-//        StringBuilder query = new StringBuilder();
-//        query.append(SELECT);
-//        query.append("FROM catalog ");
-//        query.append("LEFT OUTER JOIN collection ON catalog.coinId = collection.coinId ");
-//        query.append("WHERE theme = '");
-//        query.append(theme.value);
-//        query.append("' ORDER BY imageId DESC");
-//
-//        return getSomeCoins(query.toString());
-//    }
-
     public List<Coin> getAllCoins(Theme theme1, Theme theme2) {
         StringBuilder query = new StringBuilder();
         query.append(SELECT);
@@ -48,19 +36,6 @@ public class CoinDao {
 
         return getSomeCoins(query.toString());
     }
-
-//    public List<Coin> getNeedCoins(Theme theme) {
-//        StringBuilder query = new StringBuilder();
-//        query.append(SELECT);
-//        query.append("FROM catalog ");
-//        query.append("LEFT OUTER JOIN collection ON catalog.coinId = collection.coinId ");
-//        query.append("WHERE theme = '");
-//        query.append(theme.value);
-//        query.append("' AND (unc + aunc + fine + good) = 0");
-//        query.append(" ORDER BY imageId DESC");
-//
-//        return getSomeCoins(query.toString());
-//    }
 
     public List<Coin> getNeedCoins(Theme theme1, Theme theme2) {
         StringBuilder query = new StringBuilder();
@@ -77,18 +52,6 @@ public class CoinDao {
         return getSomeCoins(query.toString());
     }
 
-//    public List<Coin> getSwapCoins(Theme theme) {
-//        StringBuilder query = new StringBuilder();
-//        query.append(SELECT);
-//        query.append("FROM catalog ");
-//        query.append("LEFT OUTER JOIN collection ON catalog.coinId = collection.coinId ");
-//        query.append("WHERE theme = '");
-//        query.append(theme.value);
-//        query.append("' AND (unc + aunc + fine + good) > 1");
-//        query.append(" ORDER BY imageId DESC");
-//
-//        return getSomeCoins(query.toString());
-//    }
 
     public List<Coin> getSwapCoins(Theme theme1, Theme theme2) {
         StringBuilder query = new StringBuilder();
@@ -104,20 +67,6 @@ public class CoinDao {
 
         return getSomeCoins(query.toString());
     }
-
-//    public List<Coin> getNotUncCoins(Theme theme) {
-//        StringBuilder query = new StringBuilder();
-//        query.append(SELECT);
-//        query.append("FROM catalog ");
-//        query.append("LEFT OUTER JOIN collection ON catalog.coinId = collection.coinId ");
-//        query.append("WHERE theme = '");
-//        query.append(theme.value);
-//        query.append("' AND (aunc + fine + good) > 0");
-//        query.append(" AND unc = 0");
-//        query.append(" ORDER BY imageId DESC");
-//
-//        return getSomeCoins(query.toString());
-//    }
 
     public List<Coin> getNotUncCoins(Theme theme1, Theme theme2) {
         StringBuilder query = new StringBuilder();

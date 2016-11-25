@@ -47,8 +47,8 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:layout_width="32dp"
-            android:layout_height="78dp" />
+            android:layout_height="78dp"
+            android:layout_width="26dp" />
 
         <FrameLayout
             android:layout_width="40dp"

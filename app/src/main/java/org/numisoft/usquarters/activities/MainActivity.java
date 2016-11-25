@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-//                viewPager.setCurrentItem(tab.getPosition());
             }
         });
 
@@ -183,9 +182,9 @@ public class MainActivity extends AppCompatActivity
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-//        if (item.getItemId() == R.id.menu_1) {
-//            startActivity(new Intent(this, SettingsActivity.class));
-//        }
+        if (item.getItemId() == R.id.menu_1) {
+            startActivity(new Intent(this, SettingsActivity.class));
+        }
 
         if (item.getItemId() == R.id.aux_menu_one_mint) {
             preferences.edit().putInt(VIEW_MODE, 1).apply();
@@ -283,5 +282,40 @@ public class MainActivity extends AppCompatActivity
         if (drawerLayout.isDrawerOpen(GravityCompat.START))
             drawerLayout.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUpInitialScreen();
+    }
+
+    private void setUpInitialScreen() {
+        int viewMode = preferences.getInt(VIEW_MODE, 1);
+        switch (viewMode) {
+            case 0:
+                pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
+                        tabLayout.getTabCount(), Theme.STATES, Theme.STATES);
+                viewPager.setAdapter(pagerAdapter);
+                getSupportActionBar().setTitle("Statehood Quarters");
+                break;
+            case 1:
+                pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
+                        tabLayout.getTabCount(), Theme.STATES_P, Theme.STATES_P);
+                viewPager.setAdapter(pagerAdapter);
+                getSupportActionBar().setTitle("Statehood Quarters (P)");
+                break;
+            case 2:
+                pagerAdapter = new PageViewAdapter(getSupportFragmentManager(),
+                        tabLayout.getTabCount(), Theme.STATES_P, Theme.STATES_D);
+                viewPager.setAdapter(pagerAdapter);
+                getSupportActionBar().setTitle("Statehood Quarters");
+                break;
+
+
+        }
+
+
+
     }
 }
