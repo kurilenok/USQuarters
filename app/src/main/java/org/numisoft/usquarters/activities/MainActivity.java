@@ -189,14 +189,17 @@ public class MainActivity extends AppCompatActivity
         if (item.getItemId() == R.id.aux_menu_one_mint) {
             preferences.edit().putInt(VIEW_MODE, 1).apply();
             hideMenuItemsMode1(navigationViewMenu);
+            resetDisplay();
         }
         if (item.getItemId() == R.id.aux_menu_two_mints) {
             preferences.edit().putInt(VIEW_MODE, 2).apply();
             hideMenuItemsMode2(navigationViewMenu);
+            resetDisplay();
         }
         if (item.getItemId() == R.id.aux_menu_no_mints) {
             preferences.edit().putInt(VIEW_MODE, 0).apply();
             hideMenuItemsMode0(navigationViewMenu);
+            resetDisplay();
         }
 
         return super.onOptionsItemSelected(item);
@@ -287,10 +290,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        setUpInitialScreen();
+        resetDisplay();
     }
 
-    private void setUpInitialScreen() {
+    private void resetDisplay() {
         int viewMode = preferences.getInt(VIEW_MODE, 1);
         switch (viewMode) {
             case 0:
