@@ -18,6 +18,7 @@ import android.widget.TextView;
 import org.numisoft.usquarters.R;
 import org.numisoft.usquarters.models.Coin;
 import org.numisoft.usquarters.models.CoinDao;
+import org.numisoft.usquarters.models.Operation;
 
 import static android.content.Context.MODE_PRIVATE;
 import static org.numisoft.usquarters.utils.Constants.SHARED_PREF;
@@ -134,10 +135,12 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         int currentAUnc = coin.getAUnc();
         int currentFine = coin.getFine();
         int currentGood = coin.getGood();
+//        Operation operation = null;
 
         switch (view.getId()) {
             case R.id.bUncClose:
                 coin.setUnc(++currentUnc);
+//                operation = Operation.ADD_UNC;
                 this.dismiss();
                 break;
             case R.id.bAddUnc:
