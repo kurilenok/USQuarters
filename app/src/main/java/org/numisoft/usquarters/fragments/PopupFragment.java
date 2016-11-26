@@ -179,7 +179,7 @@ public class PopupFragment extends DialogFragment implements View.OnClickListene
         tvFine.setText(Integer.toString(coin.getFine()));
         tvGood.setText(Integer.toString(coin.getGood()));
 
-        coinDao.updateCoin(coin);
+        coinDao.updateAndPropagate(coin);
         basicFragment.doSomething(coin);
     }
 
