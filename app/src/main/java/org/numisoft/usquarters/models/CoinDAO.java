@@ -150,7 +150,7 @@ public class CoinDao {
         if (childP.getAUnc() + delta[1] >= 0) {
             childP.setAUnc(childP.getAUnc() + delta[1]);
         } else {
-            childD.setUnc(childD.getAUnc() + delta[1]);
+            childD.setAUnc(childD.getAUnc() + delta[1]);
         }
 
         if (childP.getFine() + delta[2] >= 0) {
