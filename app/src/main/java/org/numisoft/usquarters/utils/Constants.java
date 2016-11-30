@@ -6,7 +6,7 @@ package org.numisoft.usquarters.utils;
 
 public interface Constants {
 
-    public static final String SHARED_PREF = "shared_pref";
-    public static final String VIEW_MODE = "view_mode";
+    String SHARED_PREF = "shared_pref";
+    String VIEW_MODE = "view_mode";
 
 }

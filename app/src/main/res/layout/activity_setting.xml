@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root_coordinator"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
@@ -19,52 +21,81 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/tvCurrentDB"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Current Database:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_margin="12dp"/>
 
+    <TextView
+        android:id="@+id/tvCurrentDBDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="some date.." />
 
-        <RadioGroup
-            android:id="@+id/rgViewMode"
-            android:layout_width="fill_parent"
+    <TextView
+        android:id="@+id/tvCurrentDBUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="some url.."
+        android:layout_marginTop="6dp"/>
+
+    <TextView
+        android:id="@+id/tvBackupDB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Backup Database:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_margin="12dp"/>
+
+    <TextView
+        android:id="@+id/tvBackupDBDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="some date.." />
+
+    <TextView
+        android:id="@+id/tvBackupDBUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="some url.."
+        android:layout_marginTop="6dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/bSave"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="56dp"
-            android:layout_marginLeft="16dp"
-            android:orientation="vertical">
+            android:text="Save"
+            android:layout_margin="12dp"/>
 
-            <RadioButton
-                android:id="@+id/rbMode1"
-                style="@style/RadioGroup"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="Show mints separately (P || D)" />
+        <Button
+            android:id="@+id/bRestore"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restore"
+            android:layout_margin="12dp"/>
 
-            <RadioButton
-                android:id="@+id/rbMode2"
-                style="@style/RadioGroup"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="Show mints together (P + D)" />
 
-            <RadioButton
-                android:id="@+id/rbMode0"
-                style="@style/RadioGroup"
-                android:textStyle="bold"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:textSize="16sp"
-                android:text="I don't care about mints" />
-        </RadioGroup>
+    </LinearLayout>
 
-    </RelativeLayout>
-
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>
